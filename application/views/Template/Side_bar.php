@@ -30,7 +30,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?php if ( $this->uri->uri_string() == 'MainController/Entrp_set'){echo "active";} ?>"> <a href="<?php echo base_url('MainController/Entrp_set')?>" ><i class="fa fa-circle-o"></i>Entreprise Setting</a></li>
+                    <li class="<?php if ( $this->uri->uri_string() == 'EntrepriseSetting'){echo "active";} ?>"> <a href="<?php echo base_url('EntrepriseSetting')?>" ><i class="fa fa-circle-o"></i>Information du Societe</a></li>
                 </ul>
             </li>
         </ul>
