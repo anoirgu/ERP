@@ -20,7 +20,7 @@ $this->load->view('Template/Header');?>
                 </div>
                 <span class="help-block"></span>
                 <br>
-                <button class="btn btn-lg btn-primary btn-block" type="submit"> Envoyer </button><br>
+                <button class="btn btn-lg btn-danger btn-block" type="submit"> Envoyer </button><br>
                 <div class="col-md-12 pull-right">
                     <p class="omb_forgotPwd">
                         <a href="<?php echo site_url('Login') ?>">se connecter</a>

@@ -25,7 +25,7 @@
                             <input type="password" class="form-control" name="password" placeholder="mot de passe" required>
                         </div>
                         <br>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">connecter</button>
+                        <button class="btn btn-lg btn-danger btn-block" type="submit">connecter</button>
                     <?php echo form_close();?>
                     <br>
 

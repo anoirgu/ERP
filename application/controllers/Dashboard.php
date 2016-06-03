@@ -13,7 +13,12 @@ class Dashboard extends CI_Controller {
         if($this->Logged_in()==0)
             redirect('Login') ;
         else{
-            $this->load->view('Dashboard') ;
+            $this->load->model('Client_M');
+            $this->load->model('Product_M') ;
+            $data['numberClient'] = $this->Client_M->count_client();
+            $data['numberFourni'] = $this->Product_M->count_Fournisseur() ; 
+            $data['numberProduit'] = $this->Product_M->count_Produit() ;
+            $this->load->view('Dashboard',$data) ;
         }
     }
 

@@ -268,16 +268,20 @@ $this->load->view('Template/Side_bar');
                                     <input required="required" maxlength="100" type="email" class="form-control" value="<?php echo $client[0]->email ?>" name="email"/>
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label">Raison Social </label>
+                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->raisonsocial ?>"  name="raisonsocial" />
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Fixe</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->telephone ?>"  name="phone" />
+                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->telephone ?>"  name="phone" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Mobile </label>
-                                    <input required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->mobile ?>"  name="phoneMobile" />
+                                    <input required="required" maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->mobile ?>"  name="phoneMobile" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Fax </label>
-                                    <input required="required"  maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->fax ?>"  name="fax" />
+                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->fax ?>"  name="fax" />
                                 </div>
 
                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -302,7 +306,7 @@ $this->load->view('Template/Side_bar');
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code Postal</label>
-                                    <input required="required"  maxlength="100" type="date" class="form-control" value="<?php echo $client[0]->code_postal ?>"  name="codePostal" />
+                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->code_postal ?>"  name="codePostal" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Activite</label>
@@ -310,7 +314,7 @@ $this->load->view('Template/Side_bar');
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code APE</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->code_ape ?>"  name="ape" />
+                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->code_ape ?>"  name="ape" />
                                 </div>
 
                             </div>
@@ -322,10 +326,7 @@ $this->load->view('Template/Side_bar');
                         <div class="col-xs-6 col-md-offset-2">
                             <div class="col-md-12">
                                 <h3> Adresse De Livraison </h3><br>
-                                <div class="form-group">
-                                    <label class="control-label">Raison Social </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->raisonsocial ?>"  name="raisonsocial" />
-                                </div>
+
                                 <div class="form-group">
                                     <label class="control-label">Adresse de Livraison  </label>
                                     <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->adresse ?>"  name="adresselivraison" />
@@ -340,7 +341,7 @@ $this->load->view('Template/Side_bar');
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code Postal</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->code_postal ?>"  name="codepostall" />
+                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $livraison[0]->code_postal ?>"  name="codepostall" />
                                 </div>
 
                                 <button class="btn btn-success btn-lg pull-right" type="submit">Mise A jour </button>

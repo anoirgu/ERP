@@ -279,15 +279,15 @@ $this->load->view('Template/Side_bar');
               <center><img src="./uploads/<?php  echo $setting[0]->logo ;  ?>" class="img-fluid" alt="Responsive image" style="height:210px; width:557px  "></center><br>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
+                            <div class="panel  panel-danger">
+                                <div class="panel-heading ">
                                     <h5> Nom du Societe </h5>
                                 </div>
                                 <div class="panel-body ">
                                     <h4><?php echo $setting[0]->nom ; ?> </h4>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Forme Juridique </h5>
                                 </div>
@@ -295,7 +295,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->form_juridique; ?></h4>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5> Raison Social  </h5>
                                 </div>
@@ -303,7 +303,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->raison_social;?> </h4>
                                 </div>
                             </div>
-                             <div class="panel panel-default">
+                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Email </h5>
                                 </div>
@@ -311,7 +311,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->email; ?>  </h4>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5> Adresse Du Societe </h5>
                                 </div>
@@ -319,7 +319,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->adresse;?> </h4>
                                 </div>
                             </div>
-                             <div class="panel panel-default">
+                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5> Ville </h5>
                                 </div>
@@ -327,7 +327,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->ville ; ?> </h4>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5> Code Postal </h5>
                                 </div>
@@ -338,7 +338,7 @@ $this->load->view('Template/Side_bar');
 
                             </div>
                             <div class="col-lg-6">
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Numero Tva Intra  </h5>
                                 </div>
@@ -346,7 +346,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->n_tva_intra ; ?>  </h4>
                                 </div>
                             </div>
-                              <div class="panel panel-default">
+                              <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Code APE  </h5>
                                 </div>
@@ -354,7 +354,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->code_ape ; ?>  </h4>
                                 </div>
                             </div>
-                              <div class="panel panel-default">
+                              <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>RCS  </h5>
                                 </div>
@@ -362,7 +362,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->rcs ; ?>  </h4>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Numero Du Siret  </h5>
                                 </div>
@@ -370,7 +370,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->n_siret; ?>  </h4>
                                 </div>
                             </div>
-                             <div class="panel panel-default">
+                             <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Numero Du Tlelphone Fixe  </h5>
                                 </div>
@@ -378,7 +378,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->n_tel_fix; ?>  </h4>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Numero Du Tlelphone Mobile </h5>
                                 </div>
@@ -386,7 +386,7 @@ $this->load->view('Template/Side_bar');
                                     <h4><?php echo $setting[0]->n_tel_mobil; ?>  </h4>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
+                            <div class="panel panel-danger">
                                 <div class="panel-heading">
                                     <h5>Numero Du Fax </h5>
                                 </div>

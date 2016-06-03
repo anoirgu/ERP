@@ -23,13 +23,17 @@ $this->load->view('Template/Side_bar');
                  <div class="panel panel-default">
                      <div class="panel-heading">Information Générale </div>
                      <div class="panel-body">
-                     <h2>  <label class="label label-warning">Statut :</label>  <?php  echo"  ".$client[0]->statut;  ?></h2><br>
-                     <h2>  <label class="label label-warning">Nom :</label>  <?php  echo $client[0]->civilite."  ".$client[0]->nom." ".$client[0]->prenom ;   ?></h2><br>
-                     <h2>  <label class="label label-warning">Adresse :</label>  <?php  echo"  ".$client[0]->adresse." , ".$client[0]->pays." ".$client[0]->ville." ".$client[0]->code_postal ;   ?></h2><br>
-                     <h2>  <label class="label label-warning">Contact :</label>  <?php  echo" Telephone Fix :  ".$client[0]->telephone." , Mobile : ".$client[0]->mobile ;   ?></h2><br>
-                     <h2>  <label class="label label-warning">Email :</label>  <?php  echo"  ".$client[0]->email  ;  ?></h2><br>
-                     <h2>  <label class="label label-warning">Activite :</label>  <?php  echo"  ".$client[0]->activite  ;  ?></h2><br>
-                 </div>
+                         <table>
+
+                    <tr><td> <h3>  <label class="label label-success">Statut :</label> </td> <td> <?php  echo"    ".$client[0]->statut;  ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label class="label label-success">Nom :</label></td><td>  <?php  echo $client[0]->civilite."  ".$client[0]->nom." ".$client[0]->prenom ;   ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label class="label label-success">Raison Social :</label></td><td>  <?php  echo"    ".$client[0]->raisonsocial  ;  ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label class="label label-success">Adresse :</label> </td><td> <?php  echo"    ".$client[0]->adresse." , ".$client[0]->pays." ".$client[0]->ville." ".$client[0]->code_postal ;   ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label class="label label-success">Contact :</label> </td><td> <?php  echo"   Telephone Fix :  ".$client[0]->telephone." , Mobile : ".$client[0]->mobile ;   ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label class="label label-success">Email :</label> </td><td> <?php  echo"    ".$client[0]->email  ;  ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label class="label label-success">Activite :</label> </td><td> <?php  echo"    ".$client[0]->activite  ;  ?></h3><br></td></tr>
+                         </table>
+                     </div>
                      </div>
          </div>
    </div>
@@ -38,8 +42,7 @@ $this->load->view('Template/Side_bar');
                  <div class="panel panel-default">
                      <div class="panel-heading">Adresse De Livraison  </div>
                      <div class="panel-body">
-                         <h2>  <label class="label label-warning">Raison Social :</label>  <?php  echo"  ".$livraison[0]->raisonsocial;?></h2><br>
-                         <h2>  <label class="label label-warning">Adresse  :</label>  <?php  echo"  ".$livraison[0]->adresse."  ,".$livraison[0]->pays."  ,".$livraison[0]->ville."  ,".$livraison[0]->code_postal ;?></h2><br>
+                         <h3>  <label class="label label-success">Adresse  :</label>  <?php  echo"  ".$livraison[0]->adresse."  ,".$livraison[0]->pays."  ,".$livraison[0]->ville."  ,".$livraison[0]->code_postal ;?></h3><br>
 
 
 

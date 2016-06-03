@@ -42,6 +42,9 @@
                         <a href="#"><i class="fa fa-circle-o"></i> Gestion Du Stock <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/AjouterFournisseur'){echo "active";} ?>"><a  href="<?php echo base_url('GestionProduit/AjouterFournisseur')?>"><i class="fa fa-circle-o"></i> Ajouter Un Fournisseur</a></li>
+                            <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/ListeFournisseur'){echo "active";} ?>"><a  href="<?php echo base_url('GestionProduit/ListeFournisseur')?>"><i class="fa fa-circle-o"></i>Liste des Fournisseurs</a></li>
+
+
                             <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/AjouterProduit'){echo "active";} ?>"><a  href="<?php echo base_url('GestionProduit/AjouterProduit')?>"><i class="fa fa-circle-o"></i> Ajouter Un Produit</a></li>
                             <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/Consulter'){echo "active";} ?>"><a  href="<?php echo site_url('GestionProduit/Consulter')?>"><i class="fa fa-circle-o"></i>liste des Produits</a></li>
                         </ul>

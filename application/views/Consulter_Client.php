@@ -26,12 +26,12 @@ $this->load->view('Template/Side_bar');
                     <table aria-describedby="example1_info" role="grid" id="example1" class="table results table-bordered table-striped dataTable">
                         <thead>
                         <tr role="row">
-                            <th aria-label="Id: activate to sort column ascending" style="width: 88px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Id</th>
-                            <th aria-label="Nom Du Client: activate to sort column ascending" style="width: 105px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Nom Du Client</th>
-                            <th aria-label="Prenom Du Client: activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Prenom Du Client</th>
-                            <th aria-sort="Numero Du Mobile " aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Numero Du Mobile</th>
+                            <th aria-label="Nom Du Client: activate to sort column ascending" style="width: 105px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Nom </th>
+                            <th aria-label="Prenom Du Client: activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Prenom</th>
+                            <th aria-sort="Numero Du Mobile " aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Numero Mobile</th>
+                            <th aria-sort="Raison Social" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Raison Social</th>
                             <th aria-sort="Date D'ajout" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Date D'ajout</th>
-                            <th aria-sort="Mise A jour Donnee" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Mise A jour Donnee</th>
+                            <th aria-sort="Mise A jour Donnee" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Mise A jour </th>
                             <th aria-sort="Supprimer" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Supprimer</th>
                         </tr>
                         </thead>
@@ -42,10 +42,10 @@ $this->load->view('Template/Side_bar');
 
                             ?>
                             <tr>
-                                <td><?php echo $i; ?> </td>
                                 <td><a href="<?php echo base_url('GestionClient/ViewInf/'.$emplistid->id);  ?>"> <?php echo $emplistid->nom ?> </a></td>
                                 <td><?php echo $emplistid->prenom  ;?>   </td>
                                 <td><?php echo $emplistid->mobile ?></td>
+                                <td><?php   echo $emplistid->raisonsocial ; ?></td>
                                 <td><?php echo $emplistid->date_creation ?></td>
                                 <td>
                                     <a href="<?php echo  base_url('GestionClient/update_client/'.$emplistid->id)?>" > <i

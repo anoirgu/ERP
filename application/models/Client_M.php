@@ -57,6 +57,9 @@ class Client_M extends CI_Model {
         $query = $this->db->query("Select * from users") ;
         return $query->result() ;
     }
+    public function count_client(){
+        return $this->db->count_all('client') ;
+    }
 
 
 

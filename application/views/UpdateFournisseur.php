@@ -7,14 +7,14 @@ $this->load->view('Template/Side_bar');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Ajouter un Client
+            Mise A jour le Fournisseur : <?php echo $fournisseur[0]->nom ." ". $fournisseur[0]->prenom ;  ?>
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('Dashboard/') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Ajout Du Client</li>
+            <li class="active">Mise A jour Du Fournisseur</li>
         </ol>
     </section>
-<hr>
+    <hr>
     <section class="content">
         <link rel="stylesheet"
               href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
@@ -211,7 +211,7 @@ $this->load->view('Template/Side_bar');
             }
         </style>
         <div class="panel ">
-        <div class="DemoBS3">
+            <div class="DemoBS3">
 
                 <!--registration form -->
 
@@ -225,10 +225,6 @@ $this->load->view('Template/Side_bar');
                             </div>
                             <div class="stepwizard-step">
                                 <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-
-                            </div>
-                            <div class="stepwizard-step">
-                                <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
 
                             </div>
                         </div>
@@ -252,66 +248,36 @@ $this->load->view('Template/Side_bar');
                                     </div>
                                 </div>
                             <?php endif; ?>
-                            <?php echo form_open('GestionClient/add_Client') ?>
+                            <?php echo form_open('GestionProduit/miseajour_Fournisseur') ?>
                             <div class="col-md-12">
                                 <br>
                                 <div class="form-group">
-                                    <label class="control-label col-lg-4">Statut</label>
-                                    <div class="col-lg-4">
-                                        <select name="statut">
-                                            <option value="client">
-                                                Client
-                                            </option>
-                                                <option   value="prospect">
-                                                    Prospect
-                                                </option>
-                                        </select>
-                                    </div>
-                                </div><br><br>
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4">Civilite</label>
-                                    <div class="col-lg-8">
-                                        <select name="civilite">
-                                            <option   value="Mr">
-                                                Mr
-                                            </option>
-                                            <option value="Mme">
-                                                Mme
-                                            </option>
-                                            <option value="Mlle">
-                                                Mlle
-                                            </option>
-
-                                        </select>
-                                    </div>
-                                </div><br>
-                                <div class="form-group">
                                     <label class="control-label">Nom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Nom" name="nom"/>
+                                    <input maxlength="100" type="text" required="required" class="form-control" value="<?php echo $fournisseur[0]->nom ;  ?>" name="nom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Prenom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Prenom" name="prenom"/>
+                                    <input maxlength="100" type="text" required="required" class="form-control" value="<?php echo $fournisseur[0]->prenom ;  ?>" name="prenom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Raison Social </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Raison Social"  name="raisonsocial" />
+                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->raisonsocial ;  ?>"  name="raisonsocial" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Email</label>
-                                    <input required="required" maxlength="100" type="email" class="form-control" placeholder="Entrer Email" name="email"/>
+                                    <input required="required" maxlength="100" type="email" class="form-control" value="<?php echo $fournisseur[0]->email ;  ?>" name="email"/>
                                 </div>
                                 <div class="form-group">
-                                        <label class="control-label">Numero Du Telephone Fixe</label>
-                                        <input  required="required" maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du telephone"  name="phone" />
-                                    </div>
+                                    <label class="control-label">Numero Du Telephone Fixe</label>
+                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->telephone ;  ?>"  name="phone" />
+                                </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Mobile </label>
-                                    <input required="required" maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du telephone Mobile"  name="phoneMobile" />
+                                    <input required="required" maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->mobile ;  ?>"  name="phoneMobile" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Fax </label>
-                                    <input required="required"  maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du Fax"  name="fax" />
+                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->fax ;  ?>" name="fax" />
                                 </div>
 
                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -320,63 +286,27 @@ $this->load->view('Template/Side_bar');
                     </div>
                     <div class="row setup-content" id="step-2">
                         <div class="col-xs-6 col-md-offset-2">
-                           <div class="col-md-12">
-                               <h3> Adresse Du Client </h3><br>
-                               <div class="form-group">
-                                   <label class="control-label">Adresse</label>
-                                   <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Entrer adresse"  name="adress" />
-                               </div>
-                               <div class="form-group">
-                                   <label class="control-label">Pays</label>
-                                   <input required="required" maxlength="100" type="text" class="form-control" placeholder="Entrer la pays "  name="pays" />
-                               </div>
-                               <div class="form-group">
-                                   <label class="control-label">Ville</label>
-                                   <input required="required" maxlength="100" type="text" class="form-control" placeholder="Entrer la ville "  name="ville" />
-                               </div>
-                               <div class="form-group">
-                                   <label class="control-label">Code Postal</label>
-                                   <input required="required"  maxlength="100" type="number" class="form-control" placeholder="Entrer le Code postal"  name="codePostal" />
-                               </div>
-                               <div class="form-group">
-                                   <label class="control-label">Activite</label>
-                                   <input  required="required" maxlength="100" type="text" class="form-control" placeholder="activite"  name="activite" />
-                               </div>
-                               <div class="form-group">
-                                   <label class="control-label">Code APE</label>
-                                   <input  required="required" maxlength="100" type="number" class="form-control" placeholder="Entrer Code APE"  name="ape" />
-                               </div>
-
-                           </div>
-                            <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-
-                            </div>
-                    </div>
-                    <div class="row setup-content" id="step-3">
-                        <div class="col-xs-6 col-md-offset-2">
                             <div class="col-md-12">
-                                <h3> Adresse De Livraison </h3><br>
-
+                                <h3> Adresse Du Fournisseur </h3><br>
                                 <div class="form-group">
-                                    <label class="control-label">Adresse de Livraison  </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Adresse de Livraison"  name="adresselivraison" />
+                                    <label class="control-label">Adresse</label>
+                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->adresse ;  ?>"  name="adress" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Pays</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Pays"  name="paysl" />
+                                    <input required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->pays ;  ?>"  name="pays" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Ville</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Ville"  name="villel" />
+                                    <input required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->ville ;  ?>"  name="ville" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code Postal</label>
-                                    <input  required="required" maxlength="100" type="number" class="form-control" placeholder="Code Postal"  name="codepostall" />
+                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->code_postal ;  ?>"  name="codePostal" />
                                 </div>
 
-                                <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
                             </div>
-
+                            <button class="btn btn-success btn-lg pull-right" type="submit">Mise A jour</button>
                         </div>
                     </div>
 
@@ -386,9 +316,9 @@ $this->load->view('Template/Side_bar');
                 <?php echo form_close(); ?>
             </div>
             <!--end redistration-->
+        </div>
+    </section>
 </div>
-</section>
-    </div>
 <?php
 $this->load->view('Template/Footer');
 ?>

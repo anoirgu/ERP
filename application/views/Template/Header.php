@@ -36,5 +36,5 @@
 <!-- <?php if($this->uri->segment(1) ==""){?>
    <body class="hold-transition skin-blue  sidebar-collapse sidebar-mini">
    <?php }else{?><?php }?> -->
-<body class="hold-transition skin-blue   sidebar-mini">
+<body class="hold-transition skin-red   sidebar-mini">
 <div class="wrapper">

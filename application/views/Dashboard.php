@@ -17,46 +17,58 @@ $this->load->view('Template/Side_bar');
     </section>
     <section class="content">
 
+        <div class="row">
+
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3><?php echo $numberClient ;  ?></h3>
+
+                        <p>Clients</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="<?php echo base_url('GestionClient/Consulter') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3><?php echo $numberFourni ;  ?></h3>
+
+                        <p>Fournisseurs</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="<?php echo base_url('GestionProduit/ListeFournisseur') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3><?php echo $numberProduit ;  ?></h3>
+
+                        <p>Product</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="<?php echo base_url('GestionProduit/Consulter');?>" class="small-box-footer">Plus Information <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            </div>
 
 
 
     </section>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+    </div>
 <?php
 $this->load->view('Template/Footer');
 ?>

@@ -101,6 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          'email'=>$email,
                          'activite'=>$activite,
                          'code_ape'=>$ape,
+                         'raisonsocial'=>$raisonsocial
 
                      );
                      $this->load->model('Client_M') ;
@@ -111,7 +112,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          'code_postal'=>$codepostall,
                          'ville'=>$villel,
                          'pays'=>$paysl,
-                         'raisonsocial'=>$raisonsocial,
                          'id_client'=>$id
                      );
                      $this->Client_M->insertadresse($dat2) ;
@@ -193,6 +193,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           'email' => $email,
                           'activite' => $activite,
                           'code_ape' => $ape,
+                          'raisonsocial'=>$raisonsocial
 
                       );
 
@@ -201,7 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           'code_postal' => $codepostall,
                           'ville' => $villel,
                           'pays' => $paysl,
-                          'raisonsocial' => $raisonsocial,
+                         
 
                       );
                       $this->load->model('Client_M');
