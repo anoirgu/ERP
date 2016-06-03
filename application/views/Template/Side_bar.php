@@ -38,6 +38,14 @@
                             <li class="<?php if ( $this->uri->uri_string() == 'GestionClient/Consulter'){echo "active";} ?>"><a  href="<?php echo site_url('GestionClient/Consulter')?>"><i class="fa fa-circle-o"></i>Consulter liste des Client</a></li>
                         </ul>
                     </li>
+                    <li class="treeview ">
+                        <a href="#"><i class="fa fa-circle-o"></i> Gestion Du Stock <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/AjouterFournisseur'){echo "active";} ?>"><a  href="<?php echo base_url('GestionProduit/AjouterFournisseur')?>"><i class="fa fa-circle-o"></i> Ajouter Un Fournisseur</a></li>
+                            <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/AjouterProduit'){echo "active";} ?>"><a  href="<?php echo base_url('GestionProduit/AjouterProduit')?>"><i class="fa fa-circle-o"></i> Ajouter Un Produit</a></li>
+                            <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/Consulter'){echo "active";} ?>"><a  href="<?php echo site_url('GestionProduit/Consulter')?>"><i class="fa fa-circle-o"></i>Consulter liste des Client</a></li>
+                        </ul>
+                    </li>
 
 
                 </ul>

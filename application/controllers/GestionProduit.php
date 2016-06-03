@@ -26,8 +26,11 @@ class GestionProduit extends CI_Controller{
     public function AjouterFournisseur(){
 
     }
-    public function ajouterProduit(){
+    public function AjouterProduit(){
 
+    }
+    public function Consulter(){
+        
     }
 
 
