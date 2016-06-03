@@ -7,13 +7,19 @@ $this->load->view('Template/Side_bar');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Gestion des ressources humaines
+            Capitol Soft ERP
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
             <li class="active">Dashboard</li>
         </ol>
+    </section>
+    <section class="content">
+
+
+
+
     </section>
     
 
@@ -50,7 +56,7 @@ $this->load->view('Template/Side_bar');
 
 
 
-
+</div>
 <?php
 $this->load->view('Template/Footer');
 ?>

@@ -31,6 +31,15 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="<?php if ( $this->uri->uri_string() == 'EntrepriseSetting'){echo "active";} ?>"> <a href="<?php echo base_url('EntrepriseSetting')?>" ><i class="fa fa-circle-o"></i>Information du Societe</a></li>
+                    <li class="treeview ">
+                        <a href="#"><i class="fa fa-circle-o"></i> Gestion Du Client <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li class="<?php if ( $this->uri->uri_string() == 'GestionClient/ajouter'){echo "active";} ?>"><a  href="<?php echo base_url('GestionClient/Ajouter')?>"><i class="fa fa-circle-o"></i> Ajouter Un Client</a></li>
+                            <li class="<?php if ( $this->uri->uri_string() == 'GestionClient/Consulter'){echo "active";} ?>"><a  href="<?php echo site_url('GestionClient/Consulter')?>"><i class="fa fa-circle-o"></i>Consulter liste des Client</a></li>
+                        </ul>
+                    </li>
+
+
                 </ul>
             </li>
         </ul>

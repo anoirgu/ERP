@@ -83,7 +83,7 @@
                     <div class="buttons-con">
                         <div class="action-link-wrap">
                             <a onclick="history.back(-1)" class="btn btn-custom btn-primary waves-effect waves-light m-t-20">Go Back</a>
-                            <a href="<?php echo base_url('PdgDashboard')?>" class="btn btn-custom btn-primary waves-effect waves-light m-t-20">Go to Home Page</a>
+                            <a href="<?php echo base_url('Dashboard')?>" class="btn btn-custom btn-primary waves-effect waves-light m-t-20">Go to Home Page</a>
                         </div>
                     </div>
                 </div>
