@@ -24,6 +24,13 @@ class GestionProduit extends CI_Controller{
     }
 
     public function AjouterFournisseur(){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            
+
+
+        }
 
     }
     public function AjouterProduit(){

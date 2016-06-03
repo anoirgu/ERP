@@ -49,6 +49,14 @@ class Client_M extends CI_Model {
         $query = $this->db->query('SELECT * from client') ;
         return $query->result() ;
     }
+    public function updateprofile($data){
+        $this->db->where('id' ,1);
+        $this->db->update('users', $data);
+    }
+    public function getInf(){
+        $query = $this->db->query("Select * from users") ;
+        return $query->result() ;
+    }
 
 
 

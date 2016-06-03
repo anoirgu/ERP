@@ -26,7 +26,44 @@ class Dashboard extends CI_Controller {
     }
     
     
-    
+    public function updateProfile(){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $this->load->model('Client_M') ; 
+            $data['profile'] = $this->Client_M->getInf() ;
+            $this->load->view('UpdateProfile',$data) ;
+        }
+        
+        
+        
+    }
+    public function miseaJourProfile(){
+        $da  =new stdClass() ;
+        $this->form_validation->set_rules('mail','', 'trim|required|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('password','', 'trim|required|min_length[4]|max_length[50]');
+        $this->form_validation->set_rules('repassword','', 'trim|required|min_length[4]|max_length[50]|matches[password]');
+        if ($this->form_validation->run() == false ){
+            $this->updateProfile($da);
+        }else{
+            $mail = $this->input->post('mail') ;
+            $password = $this->input->post('password') ;
+                $data = array(
+                    'email'=>$mail,
+                    'password'=>sha1($password)
+                );
+                $this->load->model('Client_M') ;
+                $this->Client_M->updateprofile($data) ;
+                redirect('Dashboard');
+
+            }
+
+
+
+
+
+        }
+
     
     
     

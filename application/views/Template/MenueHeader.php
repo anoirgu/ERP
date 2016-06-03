@@ -38,7 +38,7 @@
                 <ul class="nav navbar-nav">
                     <li class=" user user-menu">
 
-                        <a href="<?php echo site_url('Login/Logout')?>">
+                        <a href="<?php echo site_url('Dashboard/updateProfile')?>">
                             <img src="<?php echo base_url();?>assets/img/avatar5.png" class="user-image" alt="User Image">
 
                             <span class="hidden-xs">Profile</span>
