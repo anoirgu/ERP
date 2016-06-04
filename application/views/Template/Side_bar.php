@@ -11,16 +11,7 @@
                 <a href="#"><i class="fa fa-circle text-success"></i> En ligne</a>
             </div>
         </div>
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search Employee...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-        </form>
-        <!-- /.search form -->
+        
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">ERP </li>
@@ -46,7 +37,7 @@
 
 
                             <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/AjouterProduit'){echo "active";} ?>"><a  href="<?php echo base_url('GestionProduit/AjouterProduit')?>"><i class="fa fa-circle-o"></i> Ajouter Un Produit</a></li>
-                            <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/Consulter'){echo "active";} ?>"><a  href="<?php echo site_url('GestionProduit/Consulter')?>"><i class="fa fa-circle-o"></i>liste des Produits</a></li>
+                            <li class="<?php if ( $this->uri->uri_string() == 'GestionProduit/ListeProduit'){echo "active";} ?>"><a  href="<?php echo site_url('GestionProduit/ListeProduit')?>"><i class="fa fa-circle-o"></i>liste des Produits</a></li>
                         </ul>
                     </li>
 

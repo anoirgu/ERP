@@ -22,7 +22,7 @@ public function listeFournisseur(){
     }
     public function getProductFournisseur($id){
         $query = $this->db->get_where('product', array('id_fournisseur' => $id)) ;
-        return $query->result() ;
+        return $query->result();
     }
     public function updatefournisseur($id ,$data){
         $this->db->where('id' ,$id);
@@ -39,6 +39,27 @@ public function listeFournisseur(){
     }
     public function count_Produit(){
         return $this->db->count_all('product') ;
+    }
+    public function addProduct($data){
+        $this->db->insert('product', $data);
+    }
+    public function getProductById($id){
+        $query = $this->db->get_where('product', array('idp' => $id)) ;
+        return $query->result();
+
+    }
+    public function updateProduit($id , $data){
+        $this->db->where('idp' ,$id);
+        $this->db->update('product', $data);
+
+    }
+    public function getListProduct(){
+        $query = $this->db->query("Select * from product,fournisseur  where id=id_fournisseur order BY (id_fournisseur)");
+        return $query->result() ;
+
+    }
+    public function deletProduit($id){
+        $this->db->query("DELETE FROM product WHERE idp='$id';");
     }
 
 

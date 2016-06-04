@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
          if($this->Logged_in()==0)
              redirect('Login') ;
+         else {
+             redirect('Dashboard') ;
+         }
      }
 
      public function Logged_in()

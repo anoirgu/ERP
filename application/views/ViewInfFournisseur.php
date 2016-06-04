@@ -44,16 +44,37 @@ $this->load->view('Template/Side_bar');
                                             <thead>
                                             <tr role="row">
                                                 <th aria-label="Photo : activate to sort column ascending" style="width: 105px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Photo  </th>
-                                                <th aria-label="Description : activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Description</th>
+                                                <th aria-label="Designation : activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Designation</th>
                                                 <th aria-sort="Quantite en stock " aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Quantite </th>
                                                 <th aria-sort="Prix De Vente" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Prix De Vente</th>
                                                 <th aria-sort="Prix D'Achat" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Prix D'Achat</th>
-                                                <th aria-sort="Fournisseur" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Fournisseur </th>
-
+                                                <th aria-sort="Mise A jour" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Mise A jour </th>
                                                 <th aria-sort="Supprimer" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Supprimer</th>
                                             </tr>
                                             </thead>
                                             <tbody >
+                                            <?php
+                                            $i = 1;
+                                            foreach ($product as $emplistid) {
+
+                                                ?>
+                                                <tr>
+                                                    <td><img src=" <?php echo base_url('ProductImage/'.$emplistid->logo) ; ?>" style="height:100px;width: 100px;"></td>
+                                                    <td><?php echo $emplistid->designation  ;?>   </td>
+                                                    <td><?php echo $emplistid->quantite ?></td>
+                                                    <td><?php   echo $emplistid->prixventettc ; ?></td>
+                                                    <td><?php echo $emplistid->prix_achat ?></td>
+                                                    <td>
+                                                        <a href="<?php echo  base_url('GestionProduit/update_Produit/'.$emplistid->idp)?>" > <i
+                                                                class="fa fa-edit"></i></a></td>
+                                                    <td>
+                                                        <a href="<?php echo base_url('GestionProduit/delet_Produit/'.$emplistid->idp); ?>">
+                                                            <i class="fa fa-trash-o"></i></a>
+                                                    </td>
+
+                                                </tr>
+                                                <?php $i++;
+                                            } ?>
 
                                             </tbody>
                                         </table>

@@ -9,10 +9,11 @@ class GestionProduit extends CI_Controller{
     }
 
     public function index(){
-
-        
-        if($this->Logged_in()==0)
+    if($this->Logged_in()==0)
             redirect('Login') ;
+        else {
+            redirect('Dashboard') ; 
+        }
     }
 
     public function Logged_in()
@@ -181,12 +182,158 @@ class GestionProduit extends CI_Controller{
         if($this->Logged_in()==0)
             redirect('Login') ;
         else{
-            $this->load->view('AjouterProduit') ;
+            $this->load->model('Product_M');
+            $data['listfournisseur'] = $this->Product_M->listeFournisseur() ;
+            $this->load->view('AjouterProduit' , $data) ;
 
         }
     }
-    public function Consulter(){
+
+    public function addProduct(){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $da = new stdClass() ;
+            $this->form_validation->set_rules('designation','', 'trim|required|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('quantite','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('prixachat','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('margeht','', 'trim|required|min_length[1]|max_length[50]');
+            $this->form_validation->set_rules('tax','', 'trim|required|min_length[1]|max_length[50]');
+            $config =  array(
+                'upload_path'     => "./ProductImage/",
+                'allowed_types'   => "gif|jpg|png|jpeg|pdf",
+                'overwrite'       => TRUE,
+                'max_size'        => "2048000",  // Can be set to particular file size
+                'max_height'      => "768",
+                'max_width'       => "1024"
+            );
+            $this->load->library('upload', $config);
+            if ($this->form_validation->run() == false ||! $this->upload->do_upload()) {
+                $this->AjouterProduit($da);
+            } else {
+                $finfo=$this->upload->data();
+                $designation = $this->input->post('designation') ;
+                $quantite = $this->input->post('quantite') ;
+                $prixachat = $this->input->post('prixachat') ;
+                $margeht = $this->input->post('margeht') ;
+                $tax = $this->input->post('tax') ;
+                $fournisseur = $this->input->post('fournisseur') ;
+                $prixvente = $this->input->post('prixvente') ;
+                $data = array(
+                    'designation'=>$designation,
+                    'prix_achat'=>$prixachat,
+                    'marge_ht'=>$margeht,
+                    'taxe'=>$tax,
+                    'prixventettc'=>$prixvente,
+                    'quantite'=>$quantite,
+                    'id_fournisseur'=>$fournisseur,
+                    'logo'=>$finfo['file_name']
+                );
+                $this->load->model('Product_M') ;
+                $this->Product_M->addProduct($data) ;
+                redirect('GestionProduit/ListeProduit');
+                
+                
+                
+                
+            }
+
+
+        }
+
+
+
+
+        }
+    
+    public function update_Produit($id){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $_SESSION['idproduot'] = $id ; 
+            $this->load->model('Product_M') ; 
+            $data['product'] = $this->Product_M->getProductById($id) ; 
+            $this->load->view('UpdateProduit' , $data);
+        }
+    }
+    public function MiseAjourProduct(){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $da = new stdClass() ;
+            $this->form_validation->set_rules('designation','', 'trim|required|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('quantite','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('prixachat','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('margeht','', 'trim|required|min_length[1]|max_length[50]');
+            $this->form_validation->set_rules('tax','', 'trim|required|min_length[1]|max_length[50]');
+            $config =  array(
+                'upload_path'     => "./ProductImage/",
+                'allowed_types'   => "gif|jpg|png|jpeg|pdf",
+                'overwrite'       => TRUE,
+                'max_size'        => "2048000",  // Can be set to particular file size
+                'max_height'      => "768",
+                'max_width'       => "1024"
+            );
+            $this->load->library('upload', $config);
+            if ($this->form_validation->run() == false ||! $this->upload->do_upload()) {
+                $this->AjouterProduit($da);
+            } else {
+                $finfo=$this->upload->data();
+                $designation = $this->input->post('designation') ;
+                $quantite = $this->input->post('quantite') ;
+                $prixachat = $this->input->post('prixachat') ;
+                $margeht = $this->input->post('margeht') ;
+                $tax = $this->input->post('tax') ;
+                $prixvente = $this->input->post('prixvente') ;
+                $data = array(
+                    'designation'=>$designation,
+                    'prix_achat'=>$prixachat,
+                    'marge_ht'=>$margeht,
+                    'taxe'=>$tax,
+                    'prixventettc'=>$prixvente,
+                    'quantite'=>$quantite,
+                    'logo'=>$finfo['file_name']
+                );
+                $this->load->model('Product_M') ;
+                $this->Product_M->updateProduit($_SESSION['idproduot'],$data) ;
+                redirect('GestionProduit/ListeProduit');
+        }
+
+    }
+    }
+    
+    public function delet_Produit($id){
+        if ($this->Logged_in() == 0)
+            redirect('Login');
+        else {
+            $this->load->model('Product_M');
+            $this->Product_M->deletProduit($id) ;
+            redirect('GestionProduit/ListeProduit');
+        }
         
+    }
+    
+    
+    
+    public function ListeProduit(){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $this->load->model('Product_M') ;
+            $data['listeproduit']= $this->Product_M->getListProduct();
+            $this->load->view('ListeProduit',$data) ;
+        }
+        
+    }
+    public function ViewInfProduit($id){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $this->load->model('Product_M') ;
+            $data['produit'] = $this->Product_M->getProductById($id) ;
+            $this->load->view('ViewInfProduit', $data);
+
+        }
     }
 
 
