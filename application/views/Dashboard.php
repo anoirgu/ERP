@@ -29,7 +29,7 @@ $this->load->view('Template/Side_bar');
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="<?php echo base_url('GestionClient/Consulter') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('GestionClient/Consulter') ?>" class="small-box-footer">Plus Information<i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -44,7 +44,7 @@ $this->load->view('Template/Side_bar');
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="<?php echo base_url('GestionProduit/ListeFournisseur') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('GestionProduit/ListeFournisseur') ?>" class="small-box-footer">Plus Information  <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -54,7 +54,7 @@ $this->load->view('Template/Side_bar');
                     <div class="inner">
                         <h3><?php echo $numberProduit ;  ?></h3>
 
-                        <p>Product</p>
+                        <p>Produit</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -63,6 +63,30 @@ $this->load->view('Template/Side_bar');
                 </div>
             </div>
             </div>
+        <div class="row">
+            <div class="col-lg-2 col-xs-6"></div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+
+                    <div class="inner">
+                        <h3></h3>
+
+                       <p>Bon De Livraison </p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-android-add"></i>
+                    </div>
+                    <a href="<?php echo base_url('Bonlivraison/Ajouter') ?>" class="small-box-footer">Ajouter Bon de Livraison<i class="fa fa-arrow-circle-right"></i></a>
+
+
+                    <a href="<?php echo base_url('Bonlivraison/Consulter') ?>" class="small-box-footer">Ancien Bon de Livraison<i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+
+            
+        </div>
 
 
 

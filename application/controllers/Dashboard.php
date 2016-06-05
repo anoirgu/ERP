@@ -62,12 +62,80 @@ class Dashboard extends CI_Controller {
                 redirect('Dashboard');
 
             }
+        }
+
+    public function Setting(){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $this->load->model('Setting_M') ;
+            $data['setting'] = $this->Setting_M->get_Setting() ;
+            $this->load->view('Setting' , $data) ;
+        }
+
+    }
+    public function Setsetting(){
+        if($this->Logged_in()==0)
+            redirect('Login') ;
+        else{
+            $da  =new stdClass() ;
+            $this->form_validation->set_rules('piedpagedevis','', 'trim|required|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('piedpagefacture','', 'trim|required|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('defaulttva','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('defaulttaxe','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('fraisport','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            if ($this->form_validation->run() == false ){
+                $this->Setting($da);
+            }else{
+                $piedpagedevis = $this->input->post('piedpagedevis') ;
+                $piedpagefacture = $this->input->post('piedpagefacture') ;
+                $defaulttva= $this->input->post('defaulttva') ;
+                $defaulttaxe = $this->input->post('defaulttaxe') ;
+                $fraisport = $this->input->post('fraisport') ;
+                $data= array(
+                    'pieddevis'=>$piedpagedevis,
+                    'piedfacture'=>$piedpagefacture,
+                    'defaulttva'=>$defaulttva,
+                    'defaulttax'=>$defaulttaxe,
+                    'fraisport'=>$fraisport
+                );
+                $this->load->model('Setting_M') ;
+                $res = $this->Setting_M->get_Setting() ;
+                if(empty($res)){
+                    $this->Setting_M->add_Setting($data) ;
+
+                }else{
+                    $this->Setting_M->update_Setting($data) ;
+                }
+                redirect('Dashboard'); 
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
         }
+        
+        
+        
+        
+    }
 
     
     

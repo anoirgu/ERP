@@ -12,7 +12,7 @@ class GestionProduit extends CI_Controller{
     if($this->Logged_in()==0)
             redirect('Login') ;
         else {
-            redirect('Dashboard') ; 
+            redirect('Dashboard') ;
         }
     }
 
@@ -183,6 +183,8 @@ class GestionProduit extends CI_Controller{
             redirect('Login') ;
         else{
             $this->load->model('Product_M');
+            $this->load->model('Setting_M') ; 
+            $data['setting'] = $this->Setting_M->get_Setting() ; 
             $data['listfournisseur'] = $this->Product_M->listeFournisseur() ;
             $this->load->view('AjouterProduit' , $data) ;
 
@@ -199,6 +201,7 @@ class GestionProduit extends CI_Controller{
             $this->form_validation->set_rules('prixachat','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $this->form_validation->set_rules('margeht','', 'trim|required|min_length[1]|max_length[50]');
             $this->form_validation->set_rules('tax','', 'trim|required|min_length[1]|max_length[50]');
+            $this->form_validation->set_rules('reference','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $config =  array(
                 'upload_path'     => "./ProductImage/",
                 'allowed_types'   => "gif|jpg|png|jpeg|pdf",
@@ -219,6 +222,7 @@ class GestionProduit extends CI_Controller{
                 $tax = $this->input->post('tax') ;
                 $fournisseur = $this->input->post('fournisseur') ;
                 $prixvente = $this->input->post('prixvente') ;
+                $reference = $this->input->post('reference') ;
                 $data = array(
                     'designation'=>$designation,
                     'prix_achat'=>$prixachat,
@@ -227,7 +231,8 @@ class GestionProduit extends CI_Controller{
                     'prixventettc'=>$prixvente,
                     'quantite'=>$quantite,
                     'id_fournisseur'=>$fournisseur,
-                    'logo'=>$finfo['file_name']
+                    'logo'=>$finfo['file_name'],
+                    'reference'=>$reference
                 );
                 $this->load->model('Product_M') ;
                 $this->Product_M->addProduct($data) ;
@@ -266,6 +271,7 @@ class GestionProduit extends CI_Controller{
             $this->form_validation->set_rules('prixachat','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $this->form_validation->set_rules('margeht','', 'trim|required|min_length[1]|max_length[50]');
             $this->form_validation->set_rules('tax','', 'trim|required|min_length[1]|max_length[50]');
+            $this->form_validation->set_rules('reference','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $config =  array(
                 'upload_path'     => "./ProductImage/",
                 'allowed_types'   => "gif|jpg|png|jpeg|pdf",
@@ -285,6 +291,7 @@ class GestionProduit extends CI_Controller{
                 $margeht = $this->input->post('margeht') ;
                 $tax = $this->input->post('tax') ;
                 $prixvente = $this->input->post('prixvente') ;
+                $reference = $this->input->post('reference') ;
                 $data = array(
                     'designation'=>$designation,
                     'prix_achat'=>$prixachat,
@@ -292,7 +299,8 @@ class GestionProduit extends CI_Controller{
                     'taxe'=>$tax,
                     'prixventettc'=>$prixvente,
                     'quantite'=>$quantite,
-                    'logo'=>$finfo['file_name']
+                    'logo'=>$finfo['file_name'],
+                    'reference'=>$reference
                 );
                 $this->load->model('Product_M') ;
                 $this->Product_M->updateProduit($_SESSION['idproduot'],$data) ;

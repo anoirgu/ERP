@@ -40,6 +40,17 @@ $this->load->view('Template/Side_bar');
                                 <div class="col-lg-8">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label"
+                                                       for="fn">Reference </label>
+                                                <div class="col-md-8">
+                                                    <input id="postName" name="reference"
+                                                           type="text"
+                                                           class="form-control input-md"
+                                                           required value="<?php echo $product[0]->reference ?>" >
+                                                </div>
+                                            </div>
+                                            <br>
 
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label"

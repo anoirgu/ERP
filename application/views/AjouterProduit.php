@@ -40,6 +40,17 @@ $this->load->view('Template/Side_bar');
                             <div class="col-lg-8">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"
+                                                   for="fn">Reference </label>
+                                            <div class="col-md-8">
+                                                <input id="postName" name="reference"
+                                                       type="text"
+                                                       class="form-control input-md"
+                                                       required>
+                                            </div>
+                                        </div>
+                                        <br>
 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"
@@ -92,13 +103,13 @@ $this->load->view('Template/Side_bar');
                                         <br>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"
-                                                   for="ln">Marge Brute </label>
+                                                   for="ln">TVA </label>
 
                                             <div class="col-md-8">
                                                 <input id="marght" name="margeht"
                                                        type="text"
                                                        class="form-control input-md"
-                                                       required>
+                                                       required value="<?php echo $setting[0]->defaulttva ;  ?>">
                                             </div>
                                         </div>
                                         <br>
@@ -110,7 +121,7 @@ $this->load->view('Template/Side_bar');
                                                 <input id="hour_cost" name="tax"
                                                        type="text"
                                                        class="form-control input-md"
-                                                       required>
+                                                       required value="<?php echo $setting[0]->defaulttax ;  ?>">
                                             </div>
                                         </div>
                                         <br>
