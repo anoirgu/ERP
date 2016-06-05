@@ -11,7 +11,7 @@ $this->load->view('Template/Side_bar');
             Ajouter Un bon De Livraison
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i>Accueil</a></li>
+            <li><a href="<?php echo base_url('Dashboard')?>"><i class="fa fa-dashboard"></i>Accueil</a></li>
             <li class="active">Ajout Bon Livraison</li>
         </ol>
     </section>

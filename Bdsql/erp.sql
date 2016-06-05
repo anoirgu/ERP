@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 03, 2016 at 03:05 AM
+-- Generation Time: Jun 05, 2016 at 08:40 AM
 -- Server version: 5.7.12-0ubuntu1
 -- PHP Version: 7.0.4-7ubuntu2.1
 
@@ -32,7 +32,6 @@ CREATE TABLE `adresse_livraison_client` (
   `code_postal` int(30) NOT NULL,
   `ville` varchar(30) NOT NULL,
   `pays` varchar(30) NOT NULL,
-  `raisonsocial` varchar(30) NOT NULL,
   `id_client` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,9 +39,34 @@ CREATE TABLE `adresse_livraison_client` (
 -- Dumping data for table `adresse_livraison_client`
 --
 
-INSERT INTO `adresse_livraison_client` (`id`, `adresse`, `code_postal`, `ville`, `pays`, `raisonsocial`, `id_client`) VALUES
-(2, 'dlfkdln', 2, 'dlnfbnj', 'dlfbnj', 'e', 40),
-(3, 'Sfax ,Cite El BAhri', 3154, 'Sfax', 'Tunis', 'Etudiant', 41);
+INSERT INTO `adresse_livraison_client` (`id`, `adresse`, `code_postal`, `ville`, `pays`, `id_client`) VALUES
+(2, 'dlfkdln', 2, 'dlnfbnj', 'dlfbnj', 40),
+(3, 'Sfax ,Cite El BAhri', 3154, 'Sfax', 'Tunis', 41),
+(4, 'CDC', 0, 'DC', 'DCDCDCDC', 42);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bonlivraison`
+--
+
+CREATE TABLE `bonlivraison` (
+  `id` int(11) NOT NULL,
+  `designation` varchar(30) NOT NULL,
+  `prixachat` int(30) NOT NULL,
+  `tva` int(30) NOT NULL,
+  `prixvente` int(30) NOT NULL,
+  `quantite` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bonlivraison`
+--
+
+INSERT INTO `bonlivraison` (`id`, `designation`, `prixachat`, `tva`, `prixvente`, `quantite`) VALUES
+(1, 'test', 23, 21, 483, 4),
+(2, 'buiscuit', 20, 21, 420, 4),
+(3, 'test', 23, 21, 483, 4);
 
 -- --------------------------------------------------------
 
@@ -66,16 +90,99 @@ CREATE TABLE `client` (
   `email` varchar(50) NOT NULL,
   `activite` varchar(40) NOT NULL,
   `code_ape` int(30) NOT NULL,
-  `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `raisonsocial` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`id`, `statut`, `civilite`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `pays`, `telephone`, `mobile`, `fax`, `email`, `activite`, `code_ape`, `date_creation`) VALUES
-(40, 'client', 'Mr', 'srkljb', 'alja', 'ddd@ff.com', 22222, 'dlvfbfljn', 'dlvkjfblf', 222, 222, 222, 'admin@admin.com', 'dlmrngrl', 22222, '2016-06-02 22:13:30'),
-(41, 'prospect', 'Mr', 'anoir', 'gu', 'Sfax ,cite El BAhri', 3150, 'Sfax', 'Tunis', 27635381, 27635381, 27635381, 'guesmianoir@gmail.com', 'Etudiant', 12345, '2016-06-03 00:01:55');
+INSERT INTO `client` (`id`, `statut`, `civilite`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `pays`, `telephone`, `mobile`, `fax`, `email`, `activite`, `code_ape`, `date_creation`, `raisonsocial`) VALUES
+(40, 'client', 'Mr', 'srkljb', 'alja', 'ddd@ff.com', 22222, 'dlvfbfljn', 'dlvkjfblf', 222, 222, 222, 'admin@admin.com', 'dlmrngrl', 22222, '2016-06-02 22:13:30', 'capitol soft'),
+(41, 'prospect', 'Mr', 'anoir', 'gu', 'Sfax ,cite El BAhri', 3150, 'Sfax', 'Tunis', 27635381, 27635381, 27635381, 'guesmianoir@gmail.com', 'Etudiant', 12345, '2016-06-03 00:01:55', 'capitol soft'),
+(42, 'client', 'Mr', 'guesmi', 'anoir', 'sfax', 222222, 'sfax', 'tuniqie', 121212, 121212, 22222, 'chkzkx@hxh.fr', 'test', 2222, '2016-06-03 12:47:16', 'capitol soft');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fournisseur`
+--
+
+CREATE TABLE `fournisseur` (
+  `id` int(100) NOT NULL,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `raisonsocial` varchar(30) NOT NULL,
+  `adresse` varchar(30) NOT NULL,
+  `code_postal` int(30) NOT NULL,
+  `pays` varchar(30) NOT NULL,
+  `ville` varchar(30) NOT NULL,
+  `telephone` int(30) NOT NULL,
+  `mobile` int(30) NOT NULL,
+  `fax` int(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fournisseur`
+--
+
+INSERT INTO `fournisseur` (`id`, `nom`, `prenom`, `raisonsocial`, `adresse`, `code_postal`, `pays`, `ville`, `telephone`, `mobile`, `fax`, `email`, `date_creation`) VALUES
+(2, 'anoir', 'gu', 'Etudiant', 'Sfax ,cite El BAhri', 31, 'Tunis', 'Sfax', 5, 5, 4, 'admin@admin.com', '2016-06-03 15:22:54'),
+(3, 'srkljb', 'alja', 'Etudiant', 'Sfax ,cite El BAhri', 30, 'dlvkjfblf', 'Sfax', 5, 5, 5, 'admin@admin.com', '2016-06-04 10:22:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `idp` int(20) NOT NULL,
+  `designation` varchar(40) NOT NULL,
+  `prix_achat` varchar(30) NOT NULL,
+  `marge_ht` varchar(30) NOT NULL,
+  `taxe` varchar(30) NOT NULL DEFAULT '0',
+  `prixventettc` varchar(30) NOT NULL,
+  `quantite` int(30) NOT NULL,
+  `id_fournisseur` int(30) NOT NULL,
+  `logo` varchar(30) NOT NULL,
+  `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reference` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`idp`, `designation`, `prix_achat`, `marge_ht`, `taxe`, `prixventettc`, `quantite`, `id_fournisseur`, `logo`, `date_creation`, `reference`) VALUES
+(2, 'gouchou', '20', '21', '21', '', 12, 2, 'abuo.jpg', '2016-06-04 00:51:24', 1),
+(3, 'test', '23', '21', '23', '', 4, 2, '9_260.jpg', '2016-06-04 10:21:12', 2),
+(4, 'buiscuit', '20', '21', '21', '', 4, 3, 'abuo.jpg', '2016-06-04 10:27:22', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting`
+--
+
+CREATE TABLE `setting` (
+  `id` int(30) NOT NULL,
+  `pieddevis` varchar(50) NOT NULL,
+  `piedfacture` varchar(50) NOT NULL,
+  `defaulttva` int(30) NOT NULL,
+  `defaulttax` int(30) NOT NULL,
+  `fraisport` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `setting`
+--
+
+INSERT INTO `setting` (`id`, `pieddevis`, `piedfacture`, `defaulttva`, `defaulttax`, `fraisport`) VALUES
+(1, 'test', 'test', 21, 23, 239);
 
 -- --------------------------------------------------------
 
@@ -107,7 +214,7 @@ CREATE TABLE `societe_Inf` (
 --
 
 INSERT INTO `societe_Inf` (`id`, `nom`, `form_juridique`, `raison_social`, `adresse`, `code_postal`, `ville`, `n_tva_intra`, `code_ape`, `rcs`, `n_siret`, `n_tel_fix`, `n_tel_mobil`, `n_fax`, `email`, `logo`) VALUES
-(1, 'tesdvlkdfbt', 'test', 'test', 'etst', 222, 'shsh', 2222, 2222222, '22222', 2147483647, 8888, 888888, 888888, 'fff@ff.com', '1405531627-2022360812.png');
+(1, 'tesdvlkdfbt', 'test', 'test', 'etst', 222, 'shsh', 2222, 2222222, '22222', 2147483647, 8888, 888888, 888888, 'fff@ff.com', '9_260.jpg');
 
 -- --------------------------------------------------------
 
@@ -141,9 +248,34 @@ ALTER TABLE `adresse_livraison_client`
   ADD KEY `id_client` (`id_client`);
 
 --
+-- Indexes for table `bonlivraison`
+--
+ALTER TABLE `bonlivraison`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `client`
 --
 ALTER TABLE `client`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `fournisseur`
+--
+ALTER TABLE `fournisseur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`idp`),
+  ADD KEY `id_fournisseur` (`id_fournisseur`);
+
+--
+-- Indexes for table `setting`
+--
+ALTER TABLE `setting`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -166,12 +298,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `adresse_livraison_client`
 --
 ALTER TABLE `adresse_livraison_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `bonlivraison`
+--
+ALTER TABLE `bonlivraison`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT for table `fournisseur`
+--
+ALTER TABLE `fournisseur`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `idp` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `setting`
+--
+ALTER TABLE `setting`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -186,6 +338,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `adresse_livraison_client`
   ADD CONSTRAINT `adresse_livraison_client_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_fournisseur`) REFERENCES `fournisseur` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

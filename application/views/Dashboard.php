@@ -17,7 +17,7 @@ $this->load->view('Template/Side_bar');
     <section class="content">
 
         <div class="row">
-            <div class="col-lg-2 col-xs-6"></div>
+            <div class="col-lg-1 col-xs-6"></div>
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-yellow">
@@ -62,9 +62,9 @@ $this->load->view('Template/Side_bar');
                     <a href="<?php echo base_url('GestionProduit/ListeProduit');?>" class="small-box-footer">Plus Information <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            </div>
+        </div>
         <div class="row">
-            <div class="col-lg-2 col-xs-6"></div>
+            <div class="col-lg-1 col-xs-6"></div>
             <div class="col-lg-3 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-yellow">
@@ -78,15 +78,39 @@ $this->load->view('Template/Side_bar');
                         <i class="ion ion-android-add"></i>
                     </div>
                     <a href="<?php echo base_url('Bonlivraison/Ajouter') ?>" class="small-box-footer">Ajouter Bon de Livraison<i class="fa fa-arrow-circle-right"></i></a>
-
-
-                    <a href="<?php echo base_url('Bonlivraison/Consulter') ?>" class="small-box-footer">Ancien Bon de Livraison<i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
 
+                    <div class="inner">
+                        <h3></h3>
 
-            
-        </div>
+                        <p>Devis </p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-android-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Ajouter Un Devis<i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+
+                    <div class="inner">
+                        <h3></h3>
+
+                        <p> J'ai oublier</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-android-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Ajouter ..........<i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+ </div>
 
 
 

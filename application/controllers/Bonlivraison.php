@@ -42,42 +42,41 @@ class Bonlivraison extends CI_Controller
         $this->pdf->SetFont('Arial','',16);
         $this->pdf->Image(base_url().'uploads/'.$set[0]->logo ,10,6,30);
         $this->pdf->Text(80,15,'Bon De Livraison',0,0,'C');
+        $this->pdf->Text(170,38,$cli[0]->nom.' '.$cli[0]->prenom);
+        $this->pdf->Text(170,48,$cli[0]->raisonsocial ) ;
+        $this->pdf->Text(170,56,$cli[0]->adresse ) ;
+        $this->pdf->Text(170,62,$cli[0]->ville ) ;
+        $this->pdf->Text(170,68,$cli[0]->code_postal ) ;
 
 
-        $this->pdf->Text(8,38,'N° de facture : ');
+
+        $this->pdf->Text(8,38,$set[0]->nom);
+        $this->pdf->Text(8,48,$set[0]->raison_social);
+        $this->pdf->Text(8,56,$set[0]->adresse);
+        $this->pdf->Text(8,62,$set[0]->ville);
+        $this->pdf->Text(8,68,$set[0]->code_postal);
+        $this->pdf->Ln(10);
+        $this->pdf->Ln(10);
+        $this->pdf->Ln(10);
+
+
+
         // Arial bold 15
         $this->pdf->SetFont('Arial','I',15);
         // Move to the right
         // Title
-
-      /*  $this->pdf->Cell(50);
-        $this->pdf->Cell(200,10,$cli[0]->nom.' '.$cli[0]->prenom.'\n');
-        $this->pdf->Cell(290,20,$cli[0]->raisonsocial);
-        // Line break
-        $this->pdf->Ln(20);
-        $this->pdf->Cell(200,10,$set[0]->nom);
-        $this->pdf->Ln(10);
-        $this->pdf->Cell(200,10,$set[0]->raison_social);
-        $this->pdf->Ln(10);
-        $this->pdf->Cell(200,10,$set[0]->raison_social);
-        $this->pdf->Ln(10);
-        $this->pdf->Cell(200,10,$set[0]->raison_social);
-        $this->pdf->Ln(10);
-
-
-*/
-        $this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);
+    $this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);
 
        // $this->pdf->Image(base_url().'uploads/'.$set[0]->logo,10,10,-300) ;
         $this->pdf->BasicTable($header,$data);
 
 
 
-        $this->pdf->SetY(-15);
+        $this->pdf->SetY(-10);
         // Arial italic 8
         $this->pdf->SetFont('Arial','I',8);
         // Page number
-        $this->pdf->Cell(0,10,'Page 1',0,0,'C');
+       
         $this->pdf->Output();
         
         
