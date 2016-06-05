@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 05, 2016 at 08:40 AM
+-- Generation Time: Jun 05, 2016 at 04:17 PM
 -- Server version: 5.7.12-0ubuntu1
 -- PHP Version: 7.0.4-7ubuntu2.1
 
@@ -42,7 +42,36 @@ CREATE TABLE `adresse_livraison_client` (
 INSERT INTO `adresse_livraison_client` (`id`, `adresse`, `code_postal`, `ville`, `pays`, `id_client`) VALUES
 (2, 'dlfkdln', 2, 'dlnfbnj', 'dlfbnj', 40),
 (3, 'Sfax ,Cite El BAhri', 3154, 'Sfax', 'Tunis', 41),
-(4, 'CDC', 0, 'DC', 'DCDCDCDC', 42);
+(4, 'CDC', 0, 'DC', 'DCDCDCDC', 42),
+(5, 'dlfkdln', 10, 'dlnfbnj', 'dlfbnj', 43);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bonliv`
+--
+
+CREATE TABLE `bonliv` (
+  `id` int(11) NOT NULL,
+  `designation` varchar(30) NOT NULL,
+  `prixachat` int(30) NOT NULL,
+  `tva` int(30) NOT NULL,
+  `prixvente` int(30) NOT NULL,
+  `quantite` int(30) NOT NULL,
+  `numerobonlivraison` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bonliv`
+--
+
+INSERT INTO `bonliv` (`id`, `designation`, `prixachat`, `tva`, `prixvente`, `quantite`, `numerobonlivraison`) VALUES
+(25, 'gouchou', 20, 21, 420, 12, 2),
+(26, 'test', 23, 21, 483, 4, 3),
+(27, 'buiscuit', 20, 21, 420, 4, 3),
+(28, 'gouchou', 20, 21, 420, 12, 3),
+(29, 'gouchou', 20, 21, 420, 12, 5),
+(30, 'test', 23, 21, 30, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -56,17 +85,34 @@ CREATE TABLE `bonlivraison` (
   `prixachat` int(30) NOT NULL,
   `tva` int(30) NOT NULL,
   `prixvente` int(30) NOT NULL,
-  `quantite` int(30) NOT NULL
+  `quantite` int(30) NOT NULL,
+  `id_client` int(30) NOT NULL,
+  `numerobonliv` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bonlivraisonpermanat`
+--
+
+CREATE TABLE `bonlivraisonpermanat` (
+  `id` int(30) NOT NULL,
+  `numerobonliv` int(50) NOT NULL,
+  `datebon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_client` int(30) NOT NULL,
+  `id_bon` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bonlivraison`
+-- Dumping data for table `bonlivraisonpermanat`
 --
 
-INSERT INTO `bonlivraison` (`id`, `designation`, `prixachat`, `tva`, `prixvente`, `quantite`) VALUES
-(1, 'test', 23, 21, 483, 4),
-(2, 'buiscuit', 20, 21, 420, 4),
-(3, 'test', 23, 21, 483, 4);
+INSERT INTO `bonlivraisonpermanat` (`id`, `numerobonliv`, `datebon`, `id_client`, `id_bon`) VALUES
+(17, 2, '2016-06-05 12:35:12', 40, 2),
+(18, 3, '2016-06-05 12:36:11', 40, 3),
+(19, 5, '2016-06-05 13:20:40', 40, 5),
+(20, 6, '2016-06-05 14:11:34', 40, 6);
 
 -- --------------------------------------------------------
 
@@ -101,7 +147,8 @@ CREATE TABLE `client` (
 INSERT INTO `client` (`id`, `statut`, `civilite`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `pays`, `telephone`, `mobile`, `fax`, `email`, `activite`, `code_ape`, `date_creation`, `raisonsocial`) VALUES
 (40, 'client', 'Mr', 'srkljb', 'alja', 'ddd@ff.com', 22222, 'dlvfbfljn', 'dlvkjfblf', 222, 222, 222, 'admin@admin.com', 'dlmrngrl', 22222, '2016-06-02 22:13:30', 'capitol soft'),
 (41, 'prospect', 'Mr', 'anoir', 'gu', 'Sfax ,cite El BAhri', 3150, 'Sfax', 'Tunis', 27635381, 27635381, 27635381, 'guesmianoir@gmail.com', 'Etudiant', 12345, '2016-06-03 00:01:55', 'capitol soft'),
-(42, 'client', 'Mr', 'guesmi', 'anoir', 'sfax', 222222, 'sfax', 'tuniqie', 121212, 121212, 22222, 'chkzkx@hxh.fr', 'test', 2222, '2016-06-03 12:47:16', 'capitol soft');
+(42, 'client', 'Mr', 'guesmi', 'anoir', 'sfax', 222222, 'sfax', 'tuniqie', 121212, 121212, 22222, 'chkzkx@hxh.fr', 'test', 2222, '2016-06-03 12:47:16', 'capitol soft'),
+(43, 'client', 'Mr', 'sil9allel', ':khgiuh', 'Sfax ,cite El BAhri', 13, 'dlvfbfljn', 'dlvkjfblf', 2222, 222, 21, 'ljhgouhgk@gmail.tn', 'Etudiant', 3, '2016-06-05 13:25:24', 'hrizi');
 
 -- --------------------------------------------------------
 
@@ -158,9 +205,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`idp`, `designation`, `prix_achat`, `marge_ht`, `taxe`, `prixventettc`, `quantite`, `id_fournisseur`, `logo`, `date_creation`, `reference`) VALUES
-(2, 'gouchou', '20', '21', '21', '', 12, 2, 'abuo.jpg', '2016-06-04 00:51:24', 1),
-(3, 'test', '23', '21', '23', '', 4, 2, '9_260.jpg', '2016-06-04 10:21:12', 2),
-(4, 'buiscuit', '20', '21', '21', '', 4, 3, 'abuo.jpg', '2016-06-04 10:27:22', 3);
+(2, 'gouchou', '20', '21', '21', '20', 12, 2, 'abuo.jpg', '2016-06-04 00:51:24', 1),
+(3, 'test', '23', '21', '23', '30', 4, 2, '9_260.jpg', '2016-06-04 10:21:12', 2),
+(4, 'buiscuit', '20', '21', '21', '59', 4, 3, 'abuo.jpg', '2016-06-04 10:27:22', 3);
 
 -- --------------------------------------------------------
 
@@ -248,10 +295,24 @@ ALTER TABLE `adresse_livraison_client`
   ADD KEY `id_client` (`id_client`);
 
 --
+-- Indexes for table `bonliv`
+--
+ALTER TABLE `bonliv`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `bonlivraison`
 --
 ALTER TABLE `bonlivraison`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_client` (`id_client`);
+
+--
+-- Indexes for table `bonlivraisonpermanat`
+--
+ALTER TABLE `bonlivraisonpermanat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_client` (`id_client`);
 
 --
 -- Indexes for table `client`
@@ -298,17 +359,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `adresse_livraison_client`
 --
 ALTER TABLE `adresse_livraison_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `bonliv`
+--
+ALTER TABLE `bonliv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `bonlivraison`
 --
 ALTER TABLE `bonlivraison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `bonlivraisonpermanat`
+--
+ALTER TABLE `bonlivraisonpermanat`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `fournisseur`
 --
@@ -338,6 +409,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `adresse_livraison_client`
   ADD CONSTRAINT `adresse_livraison_client_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
+
+--
+-- Constraints for table `bonlivraison`
+--
+ALTER TABLE `bonlivraison`
+  ADD CONSTRAINT `bonlivraison_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
+
+--
+-- Constraints for table `bonlivraisonpermanat`
+--
+ALTER TABLE `bonlivraisonpermanat`
+  ADD CONSTRAINT `bonlivraisonpermanat_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
 -- Constraints for table `product`
