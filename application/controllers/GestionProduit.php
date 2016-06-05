@@ -200,7 +200,7 @@ class GestionProduit extends CI_Controller{
             $this->form_validation->set_rules('quantite','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $this->form_validation->set_rules('prixachat','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $this->form_validation->set_rules('margeht','', 'trim|required|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('tax','', 'trim|required|min_length[1]|max_length[50]');
+            $this->form_validation->set_rules('prixvente','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $this->form_validation->set_rules('reference','', 'trim|required|min_length[1]|max_length[50]|numeric');
             $config =  array(
                 'upload_path'     => "./ProductImage/",
@@ -219,7 +219,6 @@ class GestionProduit extends CI_Controller{
                 $quantite = $this->input->post('quantite') ;
                 $prixachat = $this->input->post('prixachat') ;
                 $margeht = $this->input->post('margeht') ;
-                $tax = $this->input->post('tax') ;
                 $fournisseur = $this->input->post('fournisseur') ;
                 $prixvente = $this->input->post('prixvente') ;
                 $reference = $this->input->post('reference') ;
@@ -227,7 +226,6 @@ class GestionProduit extends CI_Controller{
                     'designation'=>$designation,
                     'prix_achat'=>$prixachat,
                     'marge_ht'=>$margeht,
-                    'taxe'=>$tax,
                     'prixventettc'=>$prixvente,
                     'quantite'=>$quantite,
                     'id_fournisseur'=>$fournisseur,

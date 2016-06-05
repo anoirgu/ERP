@@ -28,25 +28,76 @@ class Bonlivraison extends CI_Controller
     }
     
     
-    public function imprimer(){
+    public function ajouterbon(){
+
+
         $this->load->model('Client_M') ;
         $this->load->model('Product_M') ;
-        $this->load->model('Ent_Seting_M') ;
         $this->load->model('Setting_M') ;
-        $cli = $this->Client_M->getCientId($this->input->post('client')) ;
-        $set = $this->Ent_Seting_M->get_configuration();
         $data = $this->Setting_M->getbonliv();
+        $da = array(
+            'id_client' => $data[0]->id_client,
+            'numerobonliv' => $data[0]->numerobonliv,
+            'id_bon' => $data[0]->numerobonliv
+        );
+        foreach ($data as $data) {
+            $dat = array(
+                'designation' => $data->designation,
+                'prixachat' => $data->prixachat,
+                'tva' => $data->tva,
+                'prixvente' => $data->prixvente,
+                'quantite' => $data->quantite,
+                'numerobonlivraison'=>$data->numerobonliv
+            );
+             $this->Setting_M->addbonper($dat);
+        }
+            $this->Setting_M->addbonpermanant($da) ;
+
+        $this->Setting_M->drop() ;
+        redirect('Bonlivraison/Listebon');
+    }
+
+    public function AficherBon($id){
+        if ($this->Logged_in() == 0)
+            redirect('Login');
+        else {
+            $this->load->model('Setting_M') ;
+            $data['produitbon'] = $this->Setting_M->getproduitbon($id) ;
+            $data['clienbon'] = $this->Setting_M->getBonClient($id);
+            $this->load->view('ViewInfBon',$data) ;
+            
+        }
+    }
+    public function suprimerbon($id){
+        if ($this->Logged_in() == 0)
+            redirect('Login');
+        else {
+            $this->load->model('Setting_M') ;
+            $this->Setting_M->deletebon($id) ;
+            redirect('Bonlivraison/Listebon');
+        }
+    }
+
+public function Imprimer($id){
+    if ($this->Logged_in() == 0)
+        redirect('Login');
+    else {
+        $this->load->model('Setting_M') ;
+        $this->load->model('Ent_Seting_M') ;
+        $data = $this->Setting_M->getproduitbon($id) ;
+        $cli = $this->Setting_M->getBonClient($id);
+        $set = $this->Ent_Seting_M->get_configuration();
         $header = array('Designation', 'Prix Achat', 'TVA', 'Qauntite','Prix Vente');
 
         $this->pdf->AddPage();
         $this->pdf->SetFont('Arial','',16);
         $this->pdf->Image(base_url().'uploads/'.$set[0]->logo ,10,6,30);
         $this->pdf->Text(80,15,'Bon De Livraison',0,0,'C');
-        $this->pdf->Text(170,38,$cli[0]->nom.' '.$cli[0]->prenom);
-        $this->pdf->Text(170,48,$cli[0]->raisonsocial ) ;
-        $this->pdf->Text(170,56,$cli[0]->adresse ) ;
-        $this->pdf->Text(170,62,$cli[0]->ville ) ;
-        $this->pdf->Text(170,68,$cli[0]->code_postal ) ;
+        $this->pdf->Text(160,38,$cli[0]->nom.' '.$cli[0]->prenom);
+        $this->pdf->Text(160,48,$cli[0]->raisonsocial ) ;
+        $this->pdf->Text(160,56,$cli[0]->adresse ) ;
+        $this->pdf->Text(160,62,$cli[0]->ville ) ;
+        $this->pdf->Text(160,68,$cli[0]->code_postal ) ;
 
 
 
@@ -65,9 +116,9 @@ class Bonlivraison extends CI_Controller
         $this->pdf->SetFont('Arial','I',15);
         // Move to the right
         // Title
-    $this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);
+        $this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);$this->pdf->Ln(10);
 
-       // $this->pdf->Image(base_url().'uploads/'.$set[0]->logo,10,10,-300) ;
+        // $this->pdf->Image(base_url().'uploads/'.$set[0]->logo,10,10,-300) ;
         $this->pdf->BasicTable($header,$data);
 
 
@@ -76,14 +127,36 @@ class Bonlivraison extends CI_Controller
         // Arial italic 8
         $this->pdf->SetFont('Arial','I',8);
         // Page number
-       
+
         $this->pdf->Output();
+
+
+
+    }
+
+
+}
+
+
+
+    
+    
+    public function Listebon(){
+        if ($this->Logged_in() == 0)
+            redirect('Login');
+        else {
+            $this->load->model('Client_M')  ;
+            $this->load->model('Product_M') ;
+            $this->load->model('Setting_M') ;
+
+            $data['listebon'] = $this->Setting_M->getbonpermanant() ;
+
+            $this->load->view('Listebon',$data) ;
+        }
+        
         
         
     }
-    
-    
-    
     
     
     
@@ -101,7 +174,10 @@ class Bonlivraison extends CI_Controller
             $data['client'] = $this->Client_M->getallclient();
             $data['product'] = $this->Product_M->getListProduct() ;
             $data['entseting'] = $this->Ent_Seting_M->get_configuration() ; 
-            $data['bonlivraison'] = $this->Setting_M->getbonliv() ; 
+            $data['bonlivraison'] = $this->Setting_M->getbonliv() ;
+            if(!empty($this->Setting_M->getbonliv())){
+                $data['clientchoisi'] = $this->Client_M->getCientId($this->Setting_M->getbonliv()[0]->id_client);
+            }
             $this->load->view('AjouterBonLivraison', $data) ;
         }
     }
@@ -114,12 +190,15 @@ class Bonlivraison extends CI_Controller
 
 
     public function addbonlivraison(){
+
         $data = array(
             'designation'=>$this->input->post('designation'),
             'prixachat'=>$this->input->post('prixachat'),
             'tva'=>$this->input->post('tva'),
             'prixvente'=>$this->input->post('prixvente'),
-            'quantite'=>$this->input->post('quantite')
+            'quantite'=>$this->input->post('quantite'),
+            'id_client'=>$this->input->post('clientid'),
+            'numerobonliv'=>$this->input->post('numerobonliv')
         );
         $this->load->model('Setting_M') ;
         $this->Setting_M->addbonliv($data) ;

@@ -33,6 +33,45 @@ class Setting_M extends CI_Model {
         $query = $this->db->query('SELECT * from bonlivraison') ;
         return $query->result() ;
     }
+    public function addbonper($data) {
+        $this->db->insert('bonliv', $data);
+        $inserted_id = $this->db->insert_id();
+        return $inserted_id;
+    }
+
+    public function getproduitbon($id){
+        $query = $this->db->query("SELECT * from bonliv where numerobonlivraison='$id'") ;
+        return $query->result() ;
+
+    }
+    public function getBonClient($id){
+        $query = $this->db->query("SELECT * from bonlivraisonpermanat,client where numerobonliv='$id' and client.id =id_client ") ;
+        return $query->result() ;
+    }
+public function deletebon($id){
+    $this->db->trans_start();
+    $this->db->query("DELETE FROM bonliv WHERE numerobonlivraison='$id';");
+    $this->db->query("DELETE FROM bonlivraisonpermanat WHERE numerobonliv='$id';");
+    $this->db->trans_complete();
+
+
+}
+
+
+
+
+
+
+    public function addbonpermanant($data){
+        $this->db->insert('bonlivraisonpermanat', $data);
+    }
+    public function getbonpermanant(){
+        $query = $this->db->query('SELECT * from bonlivraisonpermanat,client WHERE id_client=client.id ') ;
+        return $query->result() ;
+    }
+    public function drop(){
+        $this->db->query("DELETE FROM bonlivraison");
+    }
 
 
 

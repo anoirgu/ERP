@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          'id_client'=>$id
                      );
                      $this->Client_M->insertadresse($dat2) ;
-                      redirect('GestionClient/Ajouter') ;
+                      redirect('GestionClient/Consulter') ;
                  }
              }
              

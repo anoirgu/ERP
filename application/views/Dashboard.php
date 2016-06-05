@@ -78,6 +78,8 @@ $this->load->view('Template/Side_bar');
                         <i class="ion ion-android-add"></i>
                     </div>
                     <a href="<?php echo base_url('Bonlivraison/Ajouter') ?>" class="small-box-footer">Ajouter Bon de Livraison<i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('Bonlivraison/Listebon') ?>" class="small-box-footer">Cosulter Liste du  Bon de Livraison<i class="fa fa-arrow-circle-right"></i></a>
+
                 </div>
             </div>
             <div class="col-lg-3 col-xs-6">
@@ -86,8 +88,7 @@ $this->load->view('Template/Side_bar');
 
                     <div class="inner">
                         <h3></h3>
-
-                        <p>Devis </p>
+                      <p>Devis</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-add"></i>
@@ -102,12 +103,12 @@ $this->load->view('Template/Side_bar');
                     <div class="inner">
                         <h3></h3>
 
-                        <p> J'ai oublier</p>
+                        <p>Facture</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Ajouter ..........<i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">Ajouter Une Facture<i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
  </div>

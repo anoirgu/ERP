@@ -112,7 +112,7 @@ $this->load->view('Template/Side_bar');
                                                        required value="<?php echo $setting[0]->defaulttva ;  ?>">
                                             </div>
                                         </div>
-                                        <br>
+                                        <!-- 
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"
                                                    for="ln">Taxe </label>
@@ -123,7 +123,7 @@ $this->load->view('Template/Side_bar');
                                                        class="form-control input-md"
                                                        required value="<?php echo $setting[0]->defaulttax ;  ?>">
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <br>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"
@@ -133,7 +133,7 @@ $this->load->view('Template/Side_bar');
                                                 <input id="hour_cost" name="prixvente"
                                                        type="text"
                                                        class="form-control input-md"
-                                                     readonly  >
+                                                       >
                                             </div>
                                         </div>
                                         <br>

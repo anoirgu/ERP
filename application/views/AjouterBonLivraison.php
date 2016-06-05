@@ -36,22 +36,30 @@ $this->load->view('Template/Side_bar');
                                </div>
                            </div>
                        <?php endif; ?>
-                       <?php echo form_open('Bonlivraison/imprimer' , 'class="form-horizontal" '); ?>
+                       <?php echo form_open('Bonlivraison/ajouterbon' , 'class="form-horizontal" '); ?>
                        <fieldset>
                            <div class="row">
                                <div class="col-lg-12">
                                    <div class="panel panel-default">
                                        <div class="panel-body">
                                            <div class="form-group">
+                                               <?php if(empty($bonlivraison)){ ?>
                                                <label class="col-md-4 control-label"
                                                       for="fn">Choisir le Client  </label>
                                                <div class="col-md-8">
-                                                  <select name="client">
+
+                                                  <select name="client" id="client">
                                                       <?php foreach ($client as $client){ ?>
                                                       <option value="<?php echo  $client->id ; ?>"><?php echo $client->nom." ".$client->prenom ; ?></option>
                                                       <?php }?>
                                                   </select>
                                                    <a href="<?php echo base_url('GestionClient/Ajouter')?>">Ajouter</a>
+                                                   <?php }else{
+                                                       echo "Numero Bon LIvraison  : ".$bonlivraison[0]->numerobonliv."<br>" ; 
+                                                       echo "Bon Livraison Pour  : ".$clientchoisi[0]->nom.' '.$clientchoisi[0]->prenom  ;
+                                                       ?>
+                                                        <select id="client" hidden><option value="<?php echo $clientchoisi[0]->id; ?>"></option></select>
+                                                   <?php } ?>
                                                </div>
                                            </div>
                                            <br>
@@ -107,7 +115,7 @@ $this->load->view('Template/Side_bar');
 
                                                <div class="col-md-4">
                                                    <button id="submit" name="submit"
-                                                           class="btn btn-primary btn-block">Imprimer
+                                                           class="btn btn-primary btn-block">Ajouter Bon Livraison 
                                                    </button>
                                                </div>
                                            </div>
@@ -128,6 +136,7 @@ $this->load->view('Template/Side_bar');
   $(document).ready(function () {
     $('#add').click(function () {
         var id = $('#produit option:selected').val() ;
+        var client = $('#client option:selected').val() ; 
         $.ajax({
             type:'GET',
             data:{id : id},
@@ -141,7 +150,8 @@ $this->load->view('Template/Side_bar');
                 $('[name="prixachat"]').val(prixachat);
                 $('[name="quantite"]').val(parseInt(data[6].split(':')[1].substring(1,data[6].split(':')[1].length-1)));
                 $('[name="tva"]').val(tva);
-                $('[name="prixvente"]').val(prixachat*tva);
+                $('[name="prixvente"]').val(parseInt(data[5].split(':')[1].substring(1,data[5].split(':')[1].length-1)));
+                $('[name="clientid"').val(client);
                 $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                 $('.modal-title').text('Ajouter Produit'); // Set title to Bootstrap modal title
             }
@@ -166,6 +176,17 @@ $this->load->view('Template/Side_bar');
                                                            <?php echo form_open('Bonlivraison/addbonlivraison','" id="form" class="form-horizontal"'); ?>
                                                                <input type="hidden" value="" name="id"/>
                                                                <div class="form-body">
+                                                                   <?php if(empty($bonlivraison)){ ?>
+                                                                   <div class="form-group">
+                                                                       <label class="control-label col-md-3">Entrer Le numero Du bon </label>
+                                                                       <div class="col-md-9">
+                                                                           <input name="numerobonliv" placeholder="numero bon livraison " class="form-control" type="number" required>
+                                                                           <span class="help-block"></span>
+                                                                       </div>
+                                                                   </div>
+                                                                   <?php }else{?>
+                                                                       <input name="numerobonliv" hidden value="<?php echo $bonlivraison[0]->numerobonliv; ?>">
+                                                                   <?php } ?>
                                                                    <div class="form-group">
                                                                        <label class="control-label col-md-3">Designation</label>
                                                                        <div class="col-md-9">
@@ -194,6 +215,7 @@ $this->load->view('Template/Side_bar');
                                                                            <span class="help-block"></span>
                                                                        </div>
                                                                    </div>
+                                                                   <input hidden value="" name="clientid">
                                                                    <div class="form-group">
                                                                        <label class="control-label col-md-3">Prix Vente</label>
                                                                        <div class="col-md-9">
@@ -205,7 +227,7 @@ $this->load->view('Template/Side_bar');
                                                            </>
                                                        </div>
                                                        <div class="modal-footer">
-                                                           <button type="submit" id="btnSave"  class="btn btn-primary">Save</button>
+                                                           <button type="submit" id="btnSave"  class="btn btn-primary">Ajouter</button>
                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                                        </div>
                                                    </div><!-- /.modal-content -->
