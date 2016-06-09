@@ -26,12 +26,12 @@ $this->load->view('Template/Side_bar');
                          <table>
 
                     <tr><td> <h3>  <label class="label label-success">Statut :</label> </td> <td> <?php  echo"    ".$client[0]->statut;  ?></h3><br></td></tr>
-                             <tr><td> <h3>  <label class="label label-success">Nom :</label></td><td>  <?php  echo $client[0]->civilite."  ".$client[0]->nom." ".$client[0]->prenom ;   ?></h3><br></td></tr>
-                             <tr><td> <h3>  <label class="label label-success">Raison Social :</label></td><td>  <?php  echo"    ".$client[0]->raisonsocial  ;  ?></h3><br></td></tr>
-                             <tr><td> <h3>  <label class="label label-success">Adresse :</label> </td><td> <?php  echo"    ".$client[0]->adresse." , ".$client[0]->pays." ".$client[0]->ville." ".$client[0]->code_postal ;   ?></h3><br></td></tr>
-                             <tr><td> <h3>  <label class="label label-success">Contact :</label> </td><td> <?php  echo"   Telephone Fix :  ".$client[0]->telephone." , Mobile : ".$client[0]->mobile ;   ?></h3><br></td></tr>
-                             <tr><td> <h3>  <label class="label label-success">Email :</label> </td><td> <?php  echo"    ".$client[0]->email  ;  ?></h3><br></td></tr>
-                             <tr><td> <h3>  <label class="label label-success">Activite :</label> </td><td> <?php  echo"    ".$client[0]->activite  ;  ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label>Nom :</label></td><td>  <?php  echo $client[0]->civilite."  ".$client[0]->nom." ".$client[0]->prenom ;   ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label >Raison Social :</label></td><td>  <?php  echo"    ".$client[0]->raisonsocial  ;  ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label >Adresse :</label> </td><td> <?php  echo"    ".$client[0]->adresse." , ".$client[0]->pays." ".$client[0]->ville." ".$client[0]->code_postal ;   ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label >Contact :</label> </td><td> <?php  echo"   Telephone Fix :  ".$client[0]->telephone." , Mobile : ".$client[0]->mobile ;   ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label >Email :</label> </td><td> <?php  echo"    ".$client[0]->email  ;  ?></h3><br></td></tr>
+                             <tr><td> <h3>  <label >Activite :</label> </td><td> <?php  echo"    ".$client[0]->activite  ;  ?></h3><br></td></tr>
                          </table>
                      </div>
                      </div>

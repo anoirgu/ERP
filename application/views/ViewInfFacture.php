@@ -8,7 +8,7 @@ $this->load->view('Template/Side_bar');
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Information Sur le Bon De Livraison  Numero :  <?php  echo $clienbon[0]->numerobonliv;   ?>
+                Information Sur la Facture   Numero :<?php echo $clienbon[0]->numerofacture ; ?>
             </h1>
 
             <ol class="breadcrumb">
@@ -56,14 +56,14 @@ $this->load->view('Template/Side_bar');
                                     $pritventtotal =0;
                                     $pritttotal= 0 ;
                                     foreach ($produitbon as $produitbon){ ?>
-                                    <tr>
+                                        <tr>
 
-                                         <td><?php  echo $produitbon->designation; ?></td>
-                                        <td> <?php  echo $produitbon->prixvente; ?></td>
-                                        <td> <?php  echo $produitbon->quantite; ?></td>
-                                        <td> <?php  echo $produitbon->prixvente ;   ?></td>
+                                            <td><?php  echo $produitbon->designation; ?></td>
+                                            <td> <?php  echo $produitbon->prixvente; ?></td>
+                                            <td> <?php  echo $produitbon->quantite; ?></td>
+                                            <td> <?php  echo $produitbon->prixvente ;   ?></td>
                                         </tr>
-                                     <?php       $pritventtotal+=$produitbon->prixvente*$produitbon->quantite  ;
+                                        <?php       $pritventtotal+=$produitbon->prixvente*$produitbon->quantite  ;
                                     }?>
                                     <tr>
                                         <td></td>
@@ -79,11 +79,13 @@ $this->load->view('Template/Side_bar');
                         </div>
                     </div>
                 </div>
-                <center><a class="btn btn-primary btn-lg" href="<?php echo base_url('Bonlivraison/Imprimer/'.$clienbon[0]->numerobonliv) ?>" >Imprimer </a></center>
-               <br> <button class="btn-block btn-success" onclick="history.back(-1)">Retour </button>
+                <center><a class="btn btn-primary btn-lg" href="<?php echo base_url('Facture/Imprimer/'.$clienbon[0]->numerofacture) ?>" >Imprimer </a></center>
+                <br> <button class="btn-block btn-success" onclick="history.back(-1)">Retour </button>
             </div>
-        </section>
 
+
+
+        </section>
     </div>
 <?php
 $this->load->view('Template/Footer');

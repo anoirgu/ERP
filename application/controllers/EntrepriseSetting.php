@@ -30,20 +30,20 @@ class  EntrepriseSetting extends CI_Controller {
     
     public function set_Setting(){
           $da  = new stdClass() ;
-        $this->form_validation->set_rules('EntName','', 'trim|required|min_length[3]|max_length[50]');
-        $this->form_validation->set_rules('FormJuridique','', 'trim|required|min_length[3]|max_length[50]');
-        $this->form_validation->set_rules('RaisSocial','', 'trim|required|min_length[3]|max_length[50]');
-        $this->form_validation->set_rules('Adresse','', 'trim|required|min_length[3]|max_length[50]');
-        $this->form_validation->set_rules('CodePostal','', 'trim|required|min_length[3]|max_length[50]|numeric');
-        $this->form_validation->set_rules('Ville','', 'trim|required|min_length[3]|max_length[50]');
-        $this->form_validation->set_rules('NtvaIntra','', 'trim|required|min_length[3]|max_length[50]|numeric');
-        $this->form_validation->set_rules('CodeApe','', 'trim|required|min_length[3]|max_length[50]|numeric');
-        $this->form_validation->set_rules('RCS','', 'trim|required|min_length[3]|max_length[50]');
-        $this->form_validation->set_rules('NSiret','', 'trim|required|min_length[1]|max_length[35]|numeric');
-        $this->form_validation->set_rules('NtelephFixe','', 'trim|required|min_length[3]|max_length[50]|numeric');
-        $this->form_validation->set_rules('NumeroMobile','', 'trim|required|min_length[3]|max_length[50]|numeric');
-        $this->form_validation->set_rules('NumFax','', 'trim|required|min_length[3]|max_length[50]|numeric');
-        $this->form_validation->set_rules('Adrmail','', 'trim|required|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('EntName','', 'trim|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('FormJuridique','', 'trim|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('RaisSocial','', 'trim|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('Adresse','', 'trim|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('CodePostal','', 'trim|min_length[3]|max_length[50]|numeric');
+        $this->form_validation->set_rules('Ville','', 'trim|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('NtvaIntra','', 'trim|min_length[3]|max_length[50]|numeric');
+        $this->form_validation->set_rules('CodeApe','', 'trim|min_length[3]|max_length[50]|numeric');
+        $this->form_validation->set_rules('RCS','', 'trim|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('NSiret','', 'trim|min_length[1]|max_length[35]|numeric');
+        $this->form_validation->set_rules('NtelephFixe','', 'trim|min_length[3]|max_length[50]|numeric');
+        $this->form_validation->set_rules('NumeroMobile','', 'trim|min_length[3]|max_length[50]|numeric');
+        $this->form_validation->set_rules('NumFax','', 'trim|min_length[3]|max_length[50]|numeric');
+        $this->form_validation->set_rules('Adrmail','', 'trim|min_length[3]|max_length[50]');
         $config =  array(
             'upload_path'     => "./uploads/",
             'allowed_types'   => "gif|jpg|png|jpeg|pdf",

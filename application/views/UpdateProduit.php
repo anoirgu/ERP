@@ -119,19 +119,10 @@ $this->load->view('Template/Side_bar');
                                                     <input id="hour_cost" name="prixvente"
                                                            type="text"
                                                            class="form-control input-md"
-                                                            value="<?php echo $product[0]->prixventettc ; ?>" disabled >
+                                                            value="<?php echo $product[0]->prixventettc ; ?>"  >
                                                 </div>
                                             </div>
                                             <br>
-                                            <div class="form-group" >
-                                                <label class="col-md-4 control-label"
-                                                       for="ln">Telecharger une Image</label>
-
-                                                <div class="col-lg-8">
-                                                    <input type='file' name='userfile' size='20' id='file' class="form-control "
-                                                           required />
-                                                </div>
-                                            </div>
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label"
                                                        for="submit"></label>

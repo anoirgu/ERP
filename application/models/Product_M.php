@@ -44,7 +44,7 @@ public function listeFournisseur(){
         $this->db->insert('product', $data);
     }
     public function getProductById($id){
-        $query = $this->db->get_where('product', array('idp' => $id)) ;
+        $query = $this->db->query("Select * from product,fournisseur  where id=id_fournisseur and idp ='$id'");
         return $query->result();
 
     }
@@ -61,6 +61,13 @@ public function listeFournisseur(){
     public function deletProduit($id){
         $this->db->query("DELETE FROM product WHERE idp='$id';");
     }
+
+    public function getProductByName($name){
+     $query =   $this->db->query("select * from product where designation like '$name' ");
+        return $query->result();
+
+    }
+    
 
 
 

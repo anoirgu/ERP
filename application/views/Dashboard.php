@@ -93,7 +93,8 @@ $this->load->view('Template/Side_bar');
                     <div class="icon">
                         <i class="ion ion-android-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Ajouter Un Devis<i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('Devis/AjouterDevis'); ?>" class="small-box-footer">Ajouter Un Devis<i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('Devis/ConsulterDevis'); ?>" class="small-box-footer">Consulter Liste des Devis<i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-xs-6">
@@ -108,7 +109,8 @@ $this->load->view('Template/Side_bar');
                     <div class="icon">
                         <i class="ion ion-android-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">Ajouter Une Facture<i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('Facture/AjouterFacture'); ?>" class="small-box-footer">Ajouter Une Facture<i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('Facture/ConsulterFacture'); ?>" class="small-box-footer">Consulter Liste des Factures<i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
  </div>

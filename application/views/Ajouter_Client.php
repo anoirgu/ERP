@@ -287,31 +287,31 @@ $this->load->view('Template/Side_bar');
                                 </div><br>
                                 <div class="form-group">
                                     <label class="control-label">Nom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Nom" name="nom"/>
+                                    <input maxlength="100" type="text"  class="form-control" placeholder="Nom" name="nom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Prenom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" placeholder="Prenom" name="prenom"/>
+                                    <input maxlength="100" type="text"  class="form-control" placeholder="Prenom" name="prenom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Raison Social </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Raison Social"  name="raisonsocial" />
+                                    <input   maxlength="100" type="text" class="form-control" placeholder="Raison Social"  name="raisonsocial" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Email</label>
-                                    <input required="required" maxlength="100" type="email" class="form-control" placeholder="Entrer Email" name="email"/>
+                                    <input  maxlength="100" type="text" class="form-control" placeholder="Entrer Email" name="email"/>
                                 </div>
                                 <div class="form-group">
                                         <label class="control-label">Numero Du Telephone Fixe</label>
-                                        <input  required="required" maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du telephone"  name="phone" />
+                                        <input  maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du telephone"  name="phone" />
                                     </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Mobile </label>
-                                    <input required="required" maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du telephone Mobile"  name="phoneMobile" />
+                                    <input  maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du telephone Mobile"  name="phoneMobile" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Fax </label>
-                                    <input required="required"  maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du Fax"  name="fax" />
+                                    <input   maxlength="100" type="number" class="form-control" placeholder="Entrer Numero Du Fax"  name="fax" />
                                 </div>
 
                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -324,27 +324,27 @@ $this->load->view('Template/Side_bar');
                                <h3> Adresse Du Client </h3><br>
                                <div class="form-group">
                                    <label class="control-label">Adresse</label>
-                                   <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Entrer adresse"  name="adress" />
+                                   <input   maxlength="100" type="text" class="form-control" placeholder="Entrer adresse"  name="adress" />
                                </div>
                                <div class="form-group">
                                    <label class="control-label">Pays</label>
-                                   <input required="required" maxlength="100" type="text" class="form-control" placeholder="Entrer la pays "  name="pays" />
+                                   <input  maxlength="100" type="text" class="form-control" placeholder="Entrer la pays "  name="pays" />
                                </div>
                                <div class="form-group">
                                    <label class="control-label">Ville</label>
-                                   <input required="required" maxlength="100" type="text" class="form-control" placeholder="Entrer la ville "  name="ville" />
+                                   <input  maxlength="100" type="text" class="form-control" placeholder="Entrer la ville "  name="ville" />
                                </div>
                                <div class="form-group">
                                    <label class="control-label">Code Postal</label>
-                                   <input required="required"  maxlength="100" type="number" class="form-control" placeholder="Entrer le Code postal"  name="codePostal" />
+                                   <input   maxlength="100" type="number" class="form-control" placeholder="Entrer le Code postal"  name="codePostal" />
                                </div>
                                <div class="form-group">
                                    <label class="control-label">Activite</label>
-                                   <input  required="required" maxlength="100" type="text" class="form-control" placeholder="activite"  name="activite" />
+                                   <input   maxlength="100" type="text" class="form-control" placeholder="activite"  name="activite" />
                                </div>
                                <div class="form-group">
                                    <label class="control-label">Code APE</label>
-                                   <input  required="required" maxlength="100" type="number" class="form-control" placeholder="Entrer Code APE"  name="ape" />
+                                   <input   maxlength="100" type="number" class="form-control" placeholder="Entrer Code APE"  name="ape" />
                                </div>
 
                            </div>
@@ -359,19 +359,19 @@ $this->load->view('Template/Side_bar');
 
                                 <div class="form-group">
                                     <label class="control-label">Adresse de Livraison  </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Adresse de Livraison"  name="adresselivraison" />
+                                    <input  maxlength="100" type="text" class="form-control" placeholder="Adresse de Livraison"  name="adresselivraison" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Pays</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Pays"  name="paysl" />
+                                    <input   maxlength="100" type="text" class="form-control" placeholder="Pays"  name="paysl" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Ville</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" placeholder="Ville"  name="villel" />
+                                    <input   maxlength="100" type="text" class="form-control" placeholder="Ville"  name="villel" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code Postal</label>
-                                    <input  required="required" maxlength="100" type="number" class="form-control" placeholder="Code Postal"  name="codepostall" />
+                                    <input   maxlength="100" type="number" class="form-control" placeholder="Code Postal"  name="codepostall" />
                                 </div>
 
                                 <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>

@@ -23,16 +23,11 @@ class Setting_M extends CI_Model {
         return $query->result() ;
     }
 
-    public function addbonliv($data){
-        $this->db->insert('bonlivraison', $data);
-    }
+    
     public function deletbon($id){
         $this->db->query("DELETE FROM bonlivraison WHERE id='$id';");
     }
-    public function getbonliv(){
-        $query = $this->db->query('SELECT * from bonlivraison') ;
-        return $query->result() ;
-    }
+    
     public function addbonper($data) {
         $this->db->insert('bonliv', $data);
         $inserted_id = $this->db->insert_id();
@@ -40,7 +35,7 @@ class Setting_M extends CI_Model {
     }
 
     public function getproduitbon($id){
-        $query = $this->db->query("SELECT * from bonliv where numerobonlivraison='$id'") ;
+        $query = $this->db->query("SELECT designation,quantite,prixvente from bonliv where numerobonliv='$id'") ;
         return $query->result() ;
 
     }
@@ -48,30 +43,61 @@ class Setting_M extends CI_Model {
         $query = $this->db->query("SELECT * from bonlivraisonpermanat,client where numerobonliv='$id' and client.id =id_client ") ;
         return $query->result() ;
     }
-public function deletebon($id){
-    $this->db->trans_start();
-    $this->db->query("DELETE FROM bonliv WHERE numerobonlivraison='$id';");
-    $this->db->query("DELETE FROM bonlivraisonpermanat WHERE numerobonliv='$id';");
-    $this->db->trans_complete();
-
-
-}
-
-
-
-
-
-
-    public function addbonpermanant($data){
-        $this->db->insert('bonlivraisonpermanat', $data);
+    public function getlistBonPermanant(){
+        $query = $this->db->query("SELECT * from bonlivraisonpermanat") ;
+        return $query->result() ;
     }
+
+
+   
     public function getbonpermanant(){
         $query = $this->db->query('SELECT * from bonlivraisonpermanat,client WHERE id_client=client.id ') ;
         return $query->result() ;
     }
-    public function drop(){
-        $this->db->query("DELETE FROM bonlivraison");
-    }
+   
+
+    public function findproduit($id){
+        $this->db->select('*')->from('product');
+        $this->db->like('designation',$id,'after');
+        $query = $this->db->get();
+        return $query->result();
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

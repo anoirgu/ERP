@@ -32,7 +32,6 @@ $this->load->view('Template/Side_bar');
                             <th aria-sort="Raison Social" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Raison Social</th>
                             <th aria-sort="Date D'ajout" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Date D'ajout</th>
                             <th aria-sort="Mise A jour Donnee" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Mise A jour </th>
-                            <th aria-sort="Supprimer" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Supprimer</th>
                         </tr>
                         </thead>
                         <tbody >
@@ -50,11 +49,6 @@ $this->load->view('Template/Side_bar');
                                 <td>
                                     <a href="<?php echo  base_url('GestionClient/update_client/'.$emplistid->id)?>" > <i
                                             class="fa fa-edit"></i></a></td>
-                                <td>
-                                    <a href="<?php echo base_url('GestionClient/delet_client/'.$emplistid->id); ?>">
-                                        <i class="fa fa-trash-o"></i></a>
-                                </td>
-
                             </tr>
                             <?php $i++;
                         } ?>

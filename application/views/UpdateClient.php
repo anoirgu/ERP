@@ -257,31 +257,31 @@ $this->load->view('Template/Side_bar');
                                 <br>
                                 <div class="form-group">
                                     <label class="control-label">Nom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" value="<?php echo $client[0]->nom ;  ?>" name="nom"/>
+                                    <input maxlength="100" type="text"  class="form-control" value="<?php echo $client[0]->nom ;  ?>" name="nom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Prenom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" value="<?php echo $client[0]->prenom ;?>" name="prenom"/>
+                                    <input maxlength="100" type="text"  class="form-control" value="<?php echo $client[0]->prenom ;?>" name="prenom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Email</label>
-                                    <input required="required" maxlength="100" type="email" class="form-control" value="<?php echo $client[0]->email ?>" name="email"/>
+                                    <input maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->email ?>" name="email"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Raison Social </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->raisonsocial ?>"  name="raisonsocial" />
+                                    <input  maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->raisonsocial ?>"  name="raisonsocial" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Fixe</label>
-                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->telephone ?>"  name="phone" />
+                                    <input   maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->telephone ?>"  name="phone" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Mobile </label>
-                                    <input required="required" maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->mobile ?>"  name="phoneMobile" />
+                                    <input  maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->mobile ?>"  name="phoneMobile" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Fax </label>
-                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->fax ?>"  name="fax" />
+                                    <input   maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->fax ?>"  name="fax" />
                                 </div>
 
                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -294,27 +294,27 @@ $this->load->view('Template/Side_bar');
                                 <h3> Adresse Du Client </h3><br>
                                 <div class="form-group">
                                     <label class="control-label">Adresse</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->adresse ?>" name="adress" />
+                                    <input   maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->adresse ?>" name="adress" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Pays</label>
-                                    <input required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->pays ?>"  name="pays" />
+                                    <input  maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->pays ?>"  name="pays" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Ville</label>
-                                    <input required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->ville ?>"  name="ville" />
+                                    <input  maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->ville ?>"  name="ville" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code Postal</label>
-                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->code_postal ?>"  name="codePostal" />
+                                    <input   maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->code_postal ?>"  name="codePostal" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Activite</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->activite ?>" name="activite" />
+                                    <input   maxlength="100" type="text" class="form-control" value="<?php echo $client[0]->activite ?>" name="activite" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code APE</label>
-                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->code_ape ?>"  name="ape" />
+                                    <input   maxlength="100" type="number" class="form-control" value="<?php echo $client[0]->code_ape ?>"  name="ape" />
                                 </div>
 
                             </div>
@@ -329,19 +329,19 @@ $this->load->view('Template/Side_bar');
 
                                 <div class="form-group">
                                     <label class="control-label">Adresse de Livraison  </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->adresse ?>"  name="adresselivraison" />
+                                    <input   maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->adresse ?>"  name="adresselivraison" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Pays</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->pays ?>"  name="paysl" />
+                                    <input   maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->pays ?>"  name="paysl" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Ville</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->ville ?>"  name="villel" />
+                                    <input   maxlength="100" type="text" class="form-control" value="<?php echo $livraison[0]->ville ?>"  name="villel" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code Postal</label>
-                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $livraison[0]->code_postal ?>"  name="codepostall" />
+                                    <input   maxlength="100" type="number" class="form-control" value="<?php echo $livraison[0]->code_postal ?>"  name="codepostall" />
                                 </div>
 
                                 <button class="btn btn-success btn-lg pull-right" type="submit">Mise A jour </button>

@@ -27,7 +27,7 @@ $this->load->view('Template/Side_bar');
                                 <tr role="row">
                                     <th aria-label="Designation : activate to sort column ascending" style="width: 105px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Designation </th>
                                     <th aria-sort="Fournisseur " aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Fournisseur</th>
-                                    <th aria-label="Pix d'achat : activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Pix d'achat</th>
+                                    <th aria-label="Qauntite EN Stock : activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Qauntite EN Stock</th>
                                     <th aria-sort="Prix De Vente" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Prix De Vente</th>
                                     <th aria-sort="Date D'achat" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Date D'achat</th>
                                     <th aria-sort="Mise A jour Donnee" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Mise A jour </th>
@@ -43,7 +43,7 @@ $this->load->view('Template/Side_bar');
                                     <tr>
                                         <td><a href="<?php echo base_url('GestionProduit/ViewInfProduit/'.$emplistid->idp);  ?>"> <?php echo $emplistid->designation ?> </a></td>
                                         <td><?php echo $emplistid->nom ." ". $emplistid->prenom  ;?>   </td>
-                                        <td><?php echo $emplistid->prix_achat ?></td>
+                                        <td><?php echo $emplistid->quantite ?></td>
                                         <td><?php   echo $emplistid->prixventettc ; ?></td>
                                         <td><?php echo $emplistid->date_creation ?></td>
                                         <td>

@@ -47,7 +47,7 @@ $this->load->view('Template/Side_bar');
                                                 <input id="postName" name="reference"
                                                        type="text"
                                                        class="form-control input-md"
-                                                       required>
+                                                       >
                                             </div>
                                         </div>
                                         <br>
@@ -59,7 +59,7 @@ $this->load->view('Template/Side_bar');
                                                 <input id="postName" name="designation"
                                                        type="text"
                                                        class="form-control input-md"
-                                                       required>
+                                                       >
                                             </div>
                                         </div>
                                         <br>
@@ -85,7 +85,7 @@ $this->load->view('Template/Side_bar');
                                                 <input id="hour_cost" name="quantite"
                                                        type="number"
                                                        class="form-control input-md"
-                                                       required>
+                                                       >
                                             </div>
                                         </div>
                                         <br>
@@ -97,7 +97,7 @@ $this->load->view('Template/Side_bar');
                                                 <input id="prixachat" name="prixachat"
                                                        type="text"
                                                        class="form-control input-md"
-                                                       required>
+                                                       >
                                             </div>
                                         </div>
                                         <br>
@@ -109,43 +109,21 @@ $this->load->view('Template/Side_bar');
                                                 <input id="marght" name="margeht"
                                                        type="text"
                                                        class="form-control input-md"
-                                                       required value="<?php echo $setting[0]->defaulttva ;  ?>">
+                                                        value="<?php echo $setting[0]->defaulttva ;  ?>">
                                             </div>
-                                        </div>
-                                        <!-- 
-                                        <div class="form-group">
-                                            <label class="col-md-4 control-label"
-                                                   for="ln">Taxe </label>
-
-                                            <div class="col-md-8">
-                                                <input id="hour_cost" name="tax"
-                                                       type="text"
-                                                       class="form-control input-md"
-                                                       required value="<?php echo $setting[0]->defaulttax ;  ?>">
-                                            </div>
-                                        </div>-->
-                                        <br>
+                                        </div><br>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"
                                                    for="ln">Prix De Vente </label>
 
                                             <div class="col-md-8">
-                                                <input id="hour_cost" name="prixvente"
+                                                <input id="privente" name="prixvente"
                                                        type="text"
                                                        class="form-control input-md"
                                                        >
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group" >
-                                            <label class="col-md-4 control-label"
-                                                   for="ln">Telecharger une Image</label>
-
-                                            <div class="col-lg-8">
-                                                <input type='file' name='userfile' size='20' id='file' class="form-control "
-                                                       required />
-                                            </div>
-                                        </div>
                                         <div class="form-group">
                                             <label class="col-md-4 control-label"
                                                    for="submit"></label>
@@ -166,7 +144,17 @@ $this->load->view('Template/Side_bar');
       </div>
 
 
+<script>
+    $(document).ready(function (){
+        var marght = $('#marght').val();
+        $('#prixachat').keyup(function () {
+           var prixachat = $('#prixachat').val() ;
+            $('#privente').val(((parseFloat(marght)*parseFloat(prixachat))/100)+parseFloat(prixachat));
+        });
 
+    });
+
+</script>
 
 
 

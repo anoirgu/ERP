@@ -45,9 +45,9 @@ class Dashboard extends CI_Controller {
     }
     public function miseaJourProfile(){
         $da  =new stdClass() ;
-        $this->form_validation->set_rules('mail','', 'trim|required|min_length[3]|max_length[50]');
-        $this->form_validation->set_rules('password','', 'trim|required|min_length[4]|max_length[50]');
-        $this->form_validation->set_rules('repassword','', 'trim|required|min_length[4]|max_length[50]|matches[password]');
+        $this->form_validation->set_rules('mail','', 'trim|min_length[3]|max_length[50]');
+        $this->form_validation->set_rules('password','', 'trim|min_length[4]|max_length[50]');
+        $this->form_validation->set_rules('repassword','', 'trim|min_length[4]|max_length[50]|matches[password]');
         if ($this->form_validation->run() == false ){
             $this->updateProfile($da);
         }else{
@@ -79,11 +79,11 @@ class Dashboard extends CI_Controller {
             redirect('Login') ;
         else{
             $da  =new stdClass() ;
-            $this->form_validation->set_rules('piedpagedevis','', 'trim|required|min_length[3]|max_length[50]');
-            $this->form_validation->set_rules('piedpagefacture','', 'trim|required|min_length[3]|max_length[50]');
-            $this->form_validation->set_rules('defaulttva','', 'trim|required|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('defaulttaxe','', 'trim|required|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('fraisport','', 'trim|required|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('piedpagedevis','', 'trim|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('piedpagefacture','', 'trim|min_length[3]|max_length[50]');
+            $this->form_validation->set_rules('defaulttva','', 'trim|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('defaulttaxe','', 'trim|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('fraisport','', 'trim|min_length[1]|max_length[50]|numeric');
             if ($this->form_validation->run() == false ){
                 $this->Setting($da);
             }else{

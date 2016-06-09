@@ -23,11 +23,11 @@ $this->load->view('Template/Side_bar');
                         <div class="panel panel-default">
                             <div class="panel-heading">Information Générale </div>
                             <div class="panel-body">
-                                <h3>  <label class="label label-warning">Nom :</label>  <?php echo  "  ".$fournisseur[0]->nom." ".$fournisseur[0]->prenom ;   ?></h3><br>
-                                <h3>  <label class="label label-warning">Raison Social :</label>  <?php  echo"  ".$fournisseur[0]->raisonsocial  ;  ?></h3><br>
-                                <h3>  <label class="label label-warning">Adresse :</label>  <?php  echo"  ".$fournisseur[0]->adresse." , ".$fournisseur[0]->pays." ".$fournisseur[0]->ville." ".$fournisseur[0]->code_postal ;   ?></h3><br>
-                                <h3>  <label class="label label-warning">Contact :</label>  <?php  echo" Telephone Fix :  ".$fournisseur[0]->telephone." , Mobile : ".$fournisseur[0]->mobile ;   ?></h3><br>
-                                <h3>  <label class="label label-warning">Email :</label>  <?php  echo"  ".$fournisseur[0]->email  ;  ?></h3><br>
+                                <h3>  <label >Nom :</label>  <?php echo  "  ".$fournisseur[0]->nom." ".$fournisseur[0]->prenom ;   ?></h3><br>
+                                <h3>  <label >Raison Social :</label>  <?php  echo"  ".$fournisseur[0]->raisonsocial  ;  ?></h3><br>
+                                <h3>  <label >Adresse :</label>  <?php  echo"  ".$fournisseur[0]->adresse." , ".$fournisseur[0]->pays." ".$fournisseur[0]->ville." ".$fournisseur[0]->code_postal ;   ?></h3><br>
+                                <h3>  <label >Contact :</label>  <?php  echo" Telephone Fix :  ".$fournisseur[0]->telephone." , Mobile : ".$fournisseur[0]->mobile ;   ?></h3><br>
+                                <h3>  <label >Email :</label>  <?php  echo"  ".$fournisseur[0]->email  ;  ?></h3><br>
                             </div>
                         </div>
                     </div>

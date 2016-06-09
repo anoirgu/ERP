@@ -46,7 +46,8 @@ class Client_M extends CI_Model {
         $this->db->trans_complete();
     }
     public function getallclient(){
-        $query = $this->db->query('SELECT * from client') ;
+        $this->db->order_by('MONTH(date_creation), YEAR(date_creation)');
+        $query = $this->db->get('client');
         return $query->result() ;
     }
     public function updateprofile($data){

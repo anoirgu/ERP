@@ -253,31 +253,31 @@ $this->load->view('Template/Side_bar');
                                 <br>
                                 <div class="form-group">
                                     <label class="control-label">Nom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" value="<?php echo $fournisseur[0]->nom ;  ?>" name="nom"/>
+                                    <input maxlength="100" type="text"  class="form-control" value="<?php echo $fournisseur[0]->nom ;  ?>" name="nom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Prenom</label>
-                                    <input maxlength="100" type="text" required="required" class="form-control" value="<?php echo $fournisseur[0]->prenom ;  ?>" name="prenom"/>
+                                    <input maxlength="100" type="text"  class="form-control" value="<?php echo $fournisseur[0]->prenom ;  ?>" name="prenom"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Raison Social </label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->raisonsocial ;  ?>"  name="raisonsocial" />
+                                    <input   maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->raisonsocial ;  ?>"  name="raisonsocial" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Email</label>
-                                    <input required="required" maxlength="100" type="email" class="form-control" value="<?php echo $fournisseur[0]->email ;  ?>" name="email"/>
+                                    <input  maxlength="100" type="email" class="form-control" value="<?php echo $fournisseur[0]->email ;  ?>" name="email"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Fixe</label>
-                                    <input  required="required" maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->telephone ;  ?>"  name="phone" />
+                                    <input  maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->telephone ;  ?>"  name="phone" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Telephone Mobile </label>
-                                    <input required="required" maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->mobile ;  ?>"  name="phoneMobile" />
+                                    <input  maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->mobile ;  ?>"  name="phoneMobile" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Numero Du Fax </label>
-                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->fax ;  ?>" name="fax" />
+                                    <input  maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->fax ;  ?>" name="fax" />
                                 </div>
 
                                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -290,19 +290,19 @@ $this->load->view('Template/Side_bar');
                                 <h3> Adresse Du Fournisseur </h3><br>
                                 <div class="form-group">
                                     <label class="control-label">Adresse</label>
-                                    <input  required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->adresse ;  ?>"  name="adress" />
+                                    <input   maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->adresse ;  ?>"  name="adress" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Pays</label>
-                                    <input required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->pays ;  ?>"  name="pays" />
+                                    <input  maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->pays ;  ?>"  name="pays" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Ville</label>
-                                    <input required="required" maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->ville ;  ?>"  name="ville" />
+                                    <input  maxlength="100" type="text" class="form-control" value="<?php echo $fournisseur[0]->ville ;  ?>"  name="ville" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Code Postal</label>
-                                    <input required="required"  maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->code_postal ;  ?>"  name="codePostal" />
+                                    <input   maxlength="100" type="number" class="form-control" value="<?php echo $fournisseur[0]->code_postal ;  ?>"  name="codePostal" />
                                 </div>
 
                             </div>
