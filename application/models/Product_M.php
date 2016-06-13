@@ -63,12 +63,9 @@ public function listeFournisseur(){
     }
 
     public function getProductByName($name){
-     $query =   $this->db->query("select * from product where designation like '$name' ");
-        return $query->result();
-
+     $query =   $this->db->query("select * from product where designation like '$name'  ");//djdfjddidi
+        return $query->result_array();
     }
-    
-
 
 
 

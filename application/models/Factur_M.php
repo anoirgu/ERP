@@ -51,7 +51,7 @@ class Factur_M extends CI_Model{
         return $query->result() ;
     }
     public function getproduitFacture($id){
-        $query = $this->db->query("SELECT designation,quantite,prixvente from facture where numerofacture='$id'") ;
+        $query = $this->db->query("SELECT designation,quantite,prixht,prixvente,defaulttva,remise,prixtotalttc from facture,setting where numerofacture='$id'") ;
         return $query->result() ;
     }
     public function getFactureClient($id){

@@ -27,75 +27,174 @@ $this->load->view('Template/Side_bar');
                                 <div class="col-lg-12">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <?php echo form_open('Facture/AddFacture','" id="form" class="form-horizontal"'); ?>
                                             <div class="form-group">
-                                                <?php if(empty($devis)){ ?>
-                                                    <label class="col-md-4 control-label"
-                                                           for="fn">Choisir le Client  </label>
-                                                    <div class="col-md-8">
-                                                        <select name="client" id="client">
-                                                            <?php foreach ($client as $client){ ?>
-                                                                <option value="<?php echo  $client->id ; ?>"><?php echo $client->nom." ".$client->prenom ; ?></option>
-                                                            <?php }?>
-                                                        </select>
-                                                        <a href="<?php echo base_url('GestionClient/Ajouter')?>">Ajouter</a>
-                                                    </div><br><br>
+                                                <?php if( empty($_SESSION['clientFacture'])){ ?>
+                                                    <?php echo form_open('Facture/choisirClient','" id="form" class="form-horizontal"'); ?>
+                                                    <div class="row">
+                                                        <div class="col-lg-3"></div>
+                                                        <div class="col-lg-6">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">Choisir Le Client </div>
+                                                                <div class="panel-body">
+                                                                    <label class="col-md-4 control-label"
+                                                                           for="fn">  </label>
+                                                                    <div class="col-md-8">
+                                                                        <select name="client" id="client">
+                                                                            <?php foreach ($client as $client){ ?>
+                                                                                <option value="<?php echo  $client->id ; ?>"><?php echo $client->nom." ".$client->prenom ; ?></option>
+                                                                            <?php }?>
+                                                                        </select>
+                                                                        <a href="<?php echo base_url('GestionClient/Ajouter')?>">Ajouter</a>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-md-2 control-label" for="submit"></label>
+                                                                        <label class="col-md-3 control-label" for="submit"></label>
+                                                                        <button type="submit" id="btnSave" style="margin-top: 70px ; margin-left: -30px" class="btn btn-primary ">Choisir Client</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3"></div>
+                                                        <?php echo form_close(); ?>
+                                                    </div>
                                                 <?php }else{
-                                                    echo "Devis  Pour  : ".$clientchoisi[0]->nom.' '.$clientchoisi[0]->prenom  ;
-                                                    ?>
-                                                    <select id="client" hidden>
-                                                        <option value="<?php echo $clientchoisi[0]->id; ?>"></option>
-                                                    </select>
-
-                                                <?php } ?>
-
+                                                echo "Bon Livraison Pour  : ".$clientchoisi[0]->nom.' '.$clientchoisi[0]->prenom  ;
+                                                ?>
+                                                <select id="client" hidden>
+                                                    <option value="<?php echo $clientchoisi[0]->id; ?>"></option>
+                                                </select>
                                             </div>
                                             <br>
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">Choisir Les produits</div>
                                                 <div class="panel-body">
-                                                    <input type="hidden" value="" name="id"/>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3">Designation</label>
-                                                        <div class="col-md-9">
-                                                            <input name="designation" id="add" placeholder="Designation" required class="form-control" type="text">
-                                                            <span class="help-block"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3">Quantite En Stock </label>
-                                                        <div class="col-md-9">
-                                                            <input name="quantiteStock" id="stock" disabled class="form-control" type="number">
-                                                            <span class="help-block"></span>
-                                                        </div>
-                                                    </div>
+                                                    <div class="box-body">
+                                                        <div class="dataTables_wrapper form-inline dt-bootstrap" >
+                                                            <div class="row">
+                                                                <table aria-describedby="example1_info" role="grid" id="example1" class="table results table-bordered table-striped dataTable">
+                                                                    <thead>
+                                                                    <tr role="row">
+                                                                        <th aria-label="Designation : activate to sort column ascending" style="width: 105px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Designation </th>
+                                                                        <th aria-label="Qauntite EN Stock : activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Qauntite EN Stock</th>
+                                                                        <th aria-sort="Prix De Vente" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Prix De Vente</th>
+                                                                        <th aria-sort="Ajouter Au Panier" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Ajouter Au Panier</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody >
+                                                                    <?php
+                                                                    $i = 1;
+                                                                    foreach ($productlist as $emplistid) {
 
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3">Quantite</label>
-                                                        <div class="col-md-9">
-                                                            <input name="quantite" id="qauntitevendu" placeholder="quantite" class="form-control" required type="number">
-                                                            <span class="help-block"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3">Prix Vente</label>
-                                                        <div class="col-md-9">
-                                                            <input name="prixvente" placeholder="Prix Vente" class="form-control " required type="number">
-                                                            <span class="help-block"></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-md-2 control-label" for="submit"></label>
-                                                        <label class="col-md-2 control-label" for="submit"></label>
-                                                        <label class="col-md-2 control-label" for="submit"></label>
-                                                        <button type="submit" id="btnSave"  class="btn btn-primary btn-lg">Ajouter</button>
-                                                    </div>
-                                                    <?php echo  form_close(); ?>
-                                                </div>
+                                                                        ?>
+                                                                        <tr>
+                                                                            <td> <?php echo $emplistid->designation ?></td>
+                                                                            <td><?php echo $emplistid->quantite ?></td>
+                                                                            <td><?php   echo $emplistid->prixventettc ; ?></td>
+                                                                            <td><a href="#myModal<?php echo $i; ?>" data-toggle="modal"><i class="fa fa-plus"></i></a></td></tr>
+                                                                        <div id="myModal<?php echo $i; ?>" class="modal fade in"
+                                                                             role="dialog">
+                                                                            <div class="modal-dialog">
+                                                                                <!-- Modal content-->
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button type="button" class="close"
+                                                                                                data-dismiss="modal">&times;</button>
+                                                                                        <h4 class="modal-title">Ajouter Produit</h4>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <?php echo form_open('Facture/AddFacture' , 'class="form-horizontal"'); ?>
+                                                                                        <fieldset>
+                                                                                            <input value="<?php echo $emplistid->idp ;  ?>" name="id" hidden>
+                                                                                            <hr>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-md-5 control-label" for="fn">Designation</label>
+                                                                                                <div class="col-md-7">
+                                                                                                    <input id="postName" name="designation"
+                                                                                                           type="text"
+                                                                                                           value="<?php echo $emplistid->designation; ?>"
+                                                                                                           class="form-control input-md"
+                                                                                                           disabled>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <br><br>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-md-5 control-label" for="ln">Quantite Stock</label>
+                                                                                                <div class="col-md-7">
+                                                                                                    <input id="hour_cost" name=""
+                                                                                                           type="number"
+                                                                                                           value="<?php echo $emplistid->quantite; ?>"
+                                                                                                           class="form-control input-md"
+                                                                                                           disabled>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <br><br>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-md-5 control-label" for="ln">Quantite</label>
+                                                                                                <div class="col-md-7">
+                                                                                                    <input id="hour_cost" name="quantite"
+                                                                                                           type="number"
+                                                                                                           class="form-control input-md"
+                                                                                                           required="">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <br><br>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-md-5 control-label"
+                                                                                                       for="ln">Prix  Vente</label>
 
+                                                                                                <div class="col-md-7">
+                                                                                                    <input id="hour_cost" name="prixvente"
+                                                                                                           type="number"
+                                                                                                           class="form-control input-md"
+                                                                                                           value="<?php echo $emplistid->prixventettc; ?>"
+                                                                                                           required="">
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <br><br>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-md-5 control-label"
+                                                                                                       for="ln">Remise</label>
+
+                                                                                                <div class="col-md-7">
+                                                                                                    <input id="hour_cost" name="remise"
+                                                                                                           type="number"
+                                                                                                           class="form-control input-md"
+                                                                                                    >
+                                                                                                </div>
+                                                                                            </div><br><br>
+
+                                                                                            <div class="form-group pull-right">
+                                                                                                <div class="col-md-5">
+                                                                                                    <button id="submit" name="submit"
+                                                                                                            class="btn btn-primary">Ajouter
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </fieldset>
+                                                                                        <?php echo form_close(); ?>
+
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <?php $i++;
+                                                                    } ?>
+
+
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--user list -->
+                                                    </div>
                                             </div>
-
-
                                         </div>
                                         <div class="col-md-12">
                                             <label class="col-md-2 control-label" for="submit"></label>
@@ -107,7 +206,7 @@ $this->load->view('Template/Side_bar');
                                     </div>
                                 </div>
 
-
+                                    <?php } ?>
 
                         </fieldset>
                     </div>
@@ -165,6 +264,18 @@ $this->load->view('Template/Side_bar');
 
 
     </section>
+    <script>
+        $(function () {
+            $('#example1').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
 </div>
 <?php
 $this->load->view('Template/Footer');

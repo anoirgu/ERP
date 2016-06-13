@@ -35,7 +35,7 @@ class Setting_M extends CI_Model {
     }
 
     public function getproduitbon($id){
-        $query = $this->db->query("SELECT designation,quantite,prixvente from bonliv where numerobonliv='$id'") ;
+        $query = $this->db->query("SELECT designation,quantite,prixht,prixvente,defaulttva,remise,prixtotalttc  from bonliv,setting where numerobonliv='$id'") ;
         return $query->result() ;
 
     }

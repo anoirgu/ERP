@@ -117,6 +117,19 @@ class Login extends CI_Controller
                  $this->load->view('Template/Header');
                  $this->load->view('Login/Forgot_password_form', $data);
              } else {
+
+                 $config = Array(
+                     'protocol' => 'smtp',
+                     'smtp_host' => 'ssl://smtp.googlemail.com',
+                     'smtp_port' => 465,
+                     'smtp_user' => '',
+                     'smtp_pass' => '',
+                     'mailtype'  => 'html',
+                     'charset'   => 'iso-8859-1'
+                 );
+                 $this->load->library('email', $config);
+                 $this->email->set_newline("\r\n");
+                 /*
                  $config = array();
                  $config['useragent'] = "CodeIgniter";
                  $config['mailpath'] = "/usr/sbin/sendmail";
@@ -128,10 +141,10 @@ class Login extends CI_Controller
                  $config['newline'] = "\r\n";
                  $config['wordwrap'] = TRUE;
                  $this->load->library('email');
-                 $this->email->initialize($config);
+                 $this->email->initialize($config);*/
                  $password = $this->Login_M->get_user_password($email);
-                 $this->email->from('guesmianoir@gmail.com', 'Your Name');
-                 $this->email->to($this->input->post('email'));
+                 $this->email->from('', '');
+                 $this->email->to('mohamed-anwar.guesmi@enis.tn');
                  $this->email->subject('Forgotten Password');
                  $message = "<p>This email has been sent as a request to recover your password</p>";
                  $message .= "<p>if you want to reset your password,if not, then ignore</p>";
@@ -140,7 +153,7 @@ class Login extends CI_Controller
                  $this->email->send();
                  echo $this->email->print_debugger();
                  if ($this->email->send()) {
-                     $data->success = "An Email has been Send to you  , chek your message ";
+                     $data->error = "An Email has been Send to you  , chek your message ";
                      $this->load->view('Template/Header');
                      $this->load->view('Login/Forgot_password_form', $data);
                  } else {

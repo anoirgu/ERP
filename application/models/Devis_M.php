@@ -52,7 +52,7 @@ class Devis_M extends CI_Model {
         return $query->result() ;
     }
     public function getproduitDevis($id){
-        $query = $this->db->query("SELECT designation,quantite,prixvente from devis where numerodevis='$id'") ;
+        $query = $this->db->query("SELECT designation,quantite,prixht,prixvente,defaulttva,remise,prixtotalttc from devis,setting where numerodevis='$id'") ;
         return $query->result() ;
     }
     public function getDevisClient($id){

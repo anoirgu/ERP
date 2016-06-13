@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 09, 2016 at 02:32 PM
+-- Generation Time: Jun 14, 2016 at 01:53 AM
 -- Server version: 5.7.12-0ubuntu1
 -- PHP Version: 7.0.4-7ubuntu2.1
 
@@ -51,10 +51,13 @@ INSERT INTO `adresse_livraison_client` (`id`, `adresse`, `code_postal`, `ville`,
 CREATE TABLE `bonliv` (
   `id` int(11) NOT NULL,
   `designation` varchar(30) NOT NULL,
-  `prixvente` int(30) NOT NULL,
+  `prixvente` float NOT NULL,
   `quantite` int(30) NOT NULL,
   `id_client` int(30) NOT NULL,
-  `numerobonliv` int(30) NOT NULL
+  `numerobonliv` int(30) NOT NULL,
+  `remise` int(30) NOT NULL DEFAULT '0',
+  `prixht` float NOT NULL,
+  `prixtotalttc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -66,9 +69,12 @@ CREATE TABLE `bonliv` (
 CREATE TABLE `bonlivraison` (
   `id` int(11) NOT NULL,
   `designation` varchar(30) NOT NULL,
-  `prixvente` int(30) NOT NULL,
+  `prixvente` float NOT NULL,
   `quantite` int(30) NOT NULL,
-  `id_client` int(30) NOT NULL
+  `id_client` int(30) NOT NULL,
+  `remise` int(30) NOT NULL DEFAULT '0',
+  `prixht` float NOT NULL,
+  `prixtotalttc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -126,18 +132,27 @@ INSERT INTO `client` (`id`, `statut`, `civilite`, `nom`, `prenom`, `adresse`, `c
 CREATE TABLE `devis` (
   `id` int(30) NOT NULL,
   `designation` varchar(30) NOT NULL,
-  `prixvente` int(30) NOT NULL,
+  `prixvente` float NOT NULL,
   `quantite` int(30) NOT NULL,
   `id_client` int(30) NOT NULL,
-  `numerodevis` int(30) NOT NULL
+  `numerodevis` int(30) NOT NULL,
+  `remise` int(30) NOT NULL DEFAULT '0',
+  `prixht` float NOT NULL,
+  `prixtotalttc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `devis`
 --
 
-INSERT INTO `devis` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerodevis`) VALUES
-(1, 'gouchou', 23, 2, 1, 1);
+INSERT INTO `devis` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerodevis`, `remise`, `prixht`, `prixtotalttc`) VALUES
+(1, 'gouchou', 23, 2, 1, 1, 0, 0, 0),
+(2, 'gouchou', 24, 1, 1, 2, 0, 19, 0),
+(3, 'gouchou', 24, 0, 1, 3, 0, 20, 0),
+(4, 'gouchou', 24, 0, 1, 4, 0, 20, 0),
+(5, 'buiscuit', 23.6, 2, 1, 5, 0, 20, 47.2),
+(6, 'buiscuit', 23.6, 2, 1, 6, 0, 20, 47.2),
+(7, 'buiscuit', 23.6, 2, 1, 7, 0, 20, 47.2);
 
 -- --------------------------------------------------------
 
@@ -157,7 +172,13 @@ CREATE TABLE `devispermanant` (
 --
 
 INSERT INTO `devispermanant` (`numerodevis`, `datedevis`, `id_client`, `id_devis`) VALUES
-(1, '2016-06-09 11:05:59', 1, 1);
+(1, '2016-06-09 11:05:59', 1, 1),
+(2, '2016-06-13 20:21:14', 1, 1),
+(3, '2016-06-13 21:54:54', 1, 1),
+(4, '2016-06-13 21:59:28', 1, 1),
+(5, '2016-06-13 23:27:25', 1, 1),
+(6, '2016-06-13 23:32:32', 1, 1),
+(7, '2016-06-13 23:35:13', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -168,9 +189,12 @@ INSERT INTO `devispermanant` (`numerodevis`, `datedevis`, `id_client`, `id_devis
 CREATE TABLE `devistemporaire` (
   `id` int(30) NOT NULL,
   `designation` varchar(30) NOT NULL,
-  `prixvente` int(30) NOT NULL,
+  `prixvente` float NOT NULL,
   `quantite` int(30) NOT NULL,
-  `id_client` int(30) NOT NULL
+  `id_client` int(30) NOT NULL,
+  `remise` int(30) NOT NULL DEFAULT '0',
+  `prixht` float NOT NULL,
+  `prixtotalttc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -182,11 +206,22 @@ CREATE TABLE `devistemporaire` (
 CREATE TABLE `facture` (
   `id` int(30) NOT NULL,
   `designation` varchar(30) NOT NULL,
-  `prixvente` int(30) NOT NULL,
+  `prixvente` float NOT NULL,
   `quantite` int(30) NOT NULL,
   `id_client` int(30) NOT NULL,
-  `numerofacture` int(30) NOT NULL
+  `numerofacture` int(30) NOT NULL,
+  `remise` int(30) NOT NULL DEFAULT '0',
+  `prixht` float NOT NULL,
+  `prixtotalttc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `facture`
+--
+
+INSERT INTO `facture` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerofacture`, `remise`, `prixht`, `prixtotalttc`) VALUES
+(3, 'buiscuit', 21.6, 2, 1, 3, 2, 18.3051, 0),
+(4, 'buiscuit', 23.6, 2, 1, 4, 0, 20, 47.2);
 
 -- --------------------------------------------------------
 
@@ -201,6 +236,14 @@ CREATE TABLE `facturepermanant` (
   `id_facture` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `facturepermanant`
+--
+
+INSERT INTO `facturepermanant` (`numerofacture`, `datefacture`, `id_client`, `id_facture`) VALUES
+(3, '2016-06-13 22:41:10', 1, 1),
+(4, '2016-06-13 23:15:20', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -210,9 +253,12 @@ CREATE TABLE `facturepermanant` (
 CREATE TABLE `facturetemporaire` (
   `id` int(30) NOT NULL,
   `designation` varchar(30) NOT NULL,
-  `prixvente` int(30) NOT NULL,
+  `prixvente` float NOT NULL,
   `quantite` int(11) NOT NULL,
-  `id_client` int(30) NOT NULL
+  `id_client` int(30) NOT NULL,
+  `remise` int(30) NOT NULL DEFAULT '0',
+  `prixht` float NOT NULL,
+  `prixtotalttc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -269,7 +315,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`idp`, `designation`, `prix_achat`, `marge_ht`, `taxe`, `prixventettc`, `quantite`, `id_fournisseur`, `logo`, `date_creation`, `reference`) VALUES
-(1, 'gouchou', '20', '18', '0', '23.6', 8, 1, '', '2016-06-09 10:41:41', 22222);
+(4, 'gouchou', '20', '18', '0', '23.6', 0, 1, '', '2016-06-13 00:39:35', 22),
+(5, 'buiscuit', '20', '18', '0', '23.6', 23, 1, '', '2016-06-13 22:03:22', 22222);
 
 -- --------------------------------------------------------
 
@@ -467,17 +514,17 @@ ALTER TABLE `adresse_livraison_client`
 -- AUTO_INCREMENT for table `bonliv`
 --
 ALTER TABLE `bonliv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `bonlivraison`
 --
 ALTER TABLE `bonlivraison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `bonlivraisonpermanat`
 --
 ALTER TABLE `bonlivraisonpermanat`
-  MODIFY `numerobonliv` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `numerobonliv` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `client`
 --
@@ -487,32 +534,32 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `devis`
 --
 ALTER TABLE `devis`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `devispermanant`
 --
 ALTER TABLE `devispermanant`
-  MODIFY `numerodevis` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `numerodevis` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `devistemporaire`
 --
 ALTER TABLE `devistemporaire`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `facturepermanant`
 --
 ALTER TABLE `facturepermanant`
-  MODIFY `numerofacture` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `numerofacture` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `facturetemporaire`
 --
 ALTER TABLE `facturetemporaire`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `fournisseur`
 --
@@ -522,7 +569,7 @@ ALTER TABLE `fournisseur`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idp` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idp` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `setting`
 --
