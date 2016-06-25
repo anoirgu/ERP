@@ -88,7 +88,11 @@ $this->load->view('Template/Side_bar');
                                                                            <td> <?php echo $emplistid->designation ?></td>
                                                                            <td><?php echo $emplistid->quantite ?></td>
                                                                            <td><?php   echo $emplistid->prixventettc ; ?></td>
-                                                                           <td><a href="#myModal<?php echo $i; ?>" data-toggle="modal"><i class="fa fa-plus"></i></a></td></tr>
+                                                                          <?php if($emplistid->quantite>0){ ?> <td><a href="#myModal<?php echo $i; ?>" data-toggle="modal"><i class="fa fa-plus"></i></a></td>
+                                                                       <?php }else{  ?>
+                                                                           <td> vous avez 0 element de se produit en stock! </td>
+                                                                           <?php }?>
+                                                                       </tr>
                                                                        <div id="myModal<?php echo $i; ?>" class="modal fade in"
                                                                             role="dialog">
                                                                            <div class="modal-dialog">

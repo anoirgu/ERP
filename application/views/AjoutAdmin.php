@@ -7,20 +7,17 @@ $this->load->view('Template/Side_bar');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-
+        Ajouter Un Admin
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('Dashboard/') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Mise A jour  Du Profile</li>
+            <li class="active">Ajouter un Admin </li>
         </ol>
     </section>
     <hr>
     <section class="content">
-
-
         <div class="panel panel-default">
             <div class="panel-body">
-                <h3>  Mise A jour du  Profile</h3><br><br>
                 <?php if (validation_errors()) : ?>
                     <div class="col-md-12">
                         <div class="alert alert-danger" role="alert">
@@ -37,34 +34,33 @@ $this->load->view('Template/Side_bar');
                 <?php endif; ?>
 
 
-                <?php  echo form_open('Dashboard/miseaJourProfile') ?>
-                <input hidden name="id" value="<?php echo $_SESSION['user_id'] ;  ?>" >
-                <div class="row">
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label"
-                                           for="fn">Nom  :</label>
-                                    <div class="input-group col-md-8">
-                                        <div class="input-group-addon">
-                                            <i class="fa  fa-user"></i>
-                                        </div>
-                                        <input type="text" name="username" value="<?php echo $profile[0]->username ;  ?>" required  >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3"></div>
-                </div>
+                <?php  echo form_open('GestionAdmin/addAdmin') ?>
                 <div class="row">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"
+                                   for="fn">Nom D'utilisateur  :</label>
+                            <div class="input-group col-md-8">
+                                <div class="input-group-addon">
+                                    <i class="fa  fa-user"></i>
+                                </div>
+                                <input type="text" name="username" required  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
 
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-body">
                         <div class="form-group">
                             <label class="col-md-4 control-label"
                                    for="fn">Email :</label>
@@ -72,7 +68,7 @@ $this->load->view('Template/Side_bar');
                                 <div class="input-group-addon">
                                     <i class="fa  fa-envelope"></i>
                                 </div>
-                                <input type="email" name="mail"  value="<?php echo $profile[0]->email ;  ?>" ">
+                                <input type="email" name="mail"   >
                             </div>
                         </div>
                     </div>
@@ -80,6 +76,7 @@ $this->load->view('Template/Side_bar');
                     </div>
                     <div class="col-lg-3"></div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
@@ -87,12 +84,12 @@ $this->load->view('Template/Side_bar');
                     <div class="panel-body">
                         <div class="form-group">
                             <label class="col-md-4 control-label"
-                                   for="fn">Changer Mot De Passe :</label>
+                                   for="fn">Mot De Passe :</label>
                             <div class="input-group col-md-8">
                                 <div class="input-group-addon">
                                     <i class="fa fa-user-secret"></i>
                                 </div>
-                                <input type="password" name="password"  >
+                                <input type="password" name="password" >
                             </div>
                         </div>
                     </div>
@@ -100,30 +97,11 @@ $this->load->view('Template/Side_bar');
                     </div>
                     <div class="col-lg-3"></div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label class="col-md-4 control-label"
-                                   for="fn">Recrire le Mot De Passe :</label>
-                            <div class="input-group col-md-8">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-user-secret"></i>
-                                </div>
-                                <input type="password" name="repassword" >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    </div>
-                    <div class="col-lg-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-6">
-                <div class="panel panel-default">
+                    <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="form-group">
                             <label class="col-md-4 control-label"
@@ -131,7 +109,7 @@ $this->load->view('Template/Side_bar');
 
                             <div class="col-md-4">
                                 <button id="submit" name="submit"
-                                        class="btn btn-primary">Mise A jour
+                                        class="btn btn-primary">Ajouter
                                 </button>
                             </div>
                         </div>
@@ -151,8 +129,8 @@ $this->load->view('Template/Side_bar');
 
 
 
-        </section>
-    </div>
+    </section>
+</div>
 <?php
 $this->load->view('Template/Footer');
 ?>

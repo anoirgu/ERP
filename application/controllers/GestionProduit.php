@@ -35,17 +35,17 @@ class GestionProduit extends CI_Controller{
     }
         public function add_Fournisseur() {
             $da = new stdClass() ;
-            $this->form_validation->set_rules('nom','', 'trim|min_length[3]|max_length[50]');
-            $this->form_validation->set_rules('prenom','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('email','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('phone','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('phoneMobile','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('fax','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('adress','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('pays','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('ville','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('codePostal','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('raisonsocial','', 'trim|min_length[1]|max_length[50]');
+            $this->form_validation->set_rules('nom','', 'trim|min_length[3]|max_length[100]');
+            $this->form_validation->set_rules('prenom','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('email','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('phone','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('phoneMobile','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('fax','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('adress','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('pays','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('ville','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('codePostal','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('raisonsocial','', 'trim|min_length[1]|max_length[100]');
             if ($this->form_validation->run() == false ){
             $this->AjouterFournisseur($da) ;
             }else {
@@ -121,17 +121,17 @@ class GestionProduit extends CI_Controller{
        else {
            $this->load->model('Product_M');
            $da = new stdClass();
-           $this->form_validation->set_rules('nom', '', 'trim|min_length[3]|max_length[50]');
-           $this->form_validation->set_rules('prenom', '', 'trim|min_length[1]|max_length[50]');
-           $this->form_validation->set_rules('email', '', 'trim|min_length[1]|max_length[50]');
-           $this->form_validation->set_rules('phone', '', 'trim|min_length[1]|max_length[50]|numeric');
-           $this->form_validation->set_rules('phoneMobile', '', 'trim|min_length[1]|max_length[50]|numeric');
-           $this->form_validation->set_rules('fax', '', 'trim|min_length[1]|max_length[50]|numeric');
-           $this->form_validation->set_rules('adress', '', 'trim|min_length[1]|max_length[50]');
-           $this->form_validation->set_rules('pays', '', 'trim|min_length[1]|max_length[50]');
-           $this->form_validation->set_rules('ville', '', 'trim|min_length[1]|max_length[50]');
-           $this->form_validation->set_rules('codePostal', '', 'trim|min_length[1]|max_length[50]|numeric');
-           $this->form_validation->set_rules('raisonsocial', '', 'trim|min_length[1]|max_length[50]');
+           $this->form_validation->set_rules('nom', '', 'trim|min_length[3]|max_length[100]');
+           $this->form_validation->set_rules('prenom', '', 'trim|min_length[1]|max_length[100]');
+           $this->form_validation->set_rules('email', '', 'trim|min_length[1]|max_length[100]');
+           $this->form_validation->set_rules('phone', '', 'trim|min_length[1]|max_length[100]|numeric');
+           $this->form_validation->set_rules('phoneMobile', '', 'trim|min_length[1]|max_length[100]|numeric');
+           $this->form_validation->set_rules('fax', '', 'trim|min_length[1]|max_length[100]|numeric');
+           $this->form_validation->set_rules('adress', '', 'trim|min_length[1]|max_length[100]');
+           $this->form_validation->set_rules('pays', '', 'trim|min_length[1]|max_length[100]');
+           $this->form_validation->set_rules('ville', '', 'trim|min_length[1]|max_length[100]');
+           $this->form_validation->set_rules('codePostal', '', 'trim|min_length[1]|max_length[100]|numeric');
+           $this->form_validation->set_rules('raisonsocial', '', 'trim|min_length[1]|max_length[100]');
            if ($this->form_validation->run() == false) {
                $this->update_Fournisseur($_SESSION['idfournisseur']);
            } else {
@@ -196,12 +196,12 @@ class GestionProduit extends CI_Controller{
             redirect('Login') ;
         else{
             $da = new stdClass() ;
-            $this->form_validation->set_rules('designation','', 'trim|min_length[3]|max_length[50]');
-            $this->form_validation->set_rules('quantite','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('prixachat','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('margeht','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('prixvente','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('reference','', 'trim|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('designation','', 'trim|min_length[3]|max_length[100]');
+            $this->form_validation->set_rules('quantite','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('prixachat','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('margeht','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('prixvente','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('reference','', 'trim|min_length[1]|max_length[100]|numeric');
 
             if ($this->form_validation->run() == false) {
                 $this->AjouterProduit($da);
@@ -254,12 +254,12 @@ class GestionProduit extends CI_Controller{
             redirect('Login') ;
         else{
             $da = new stdClass() ;
-            $this->form_validation->set_rules('designation','', 'trim|min_length[3]|max_length[50]');
-            $this->form_validation->set_rules('quantite','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('prixachat','', 'trim|min_length[1]|max_length[50]|numeric');
-            $this->form_validation->set_rules('margeht','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('tax','', 'trim|min_length[1]|max_length[50]');
-            $this->form_validation->set_rules('reference','', 'trim|min_length[1]|max_length[50]|numeric');
+            $this->form_validation->set_rules('designation','', 'trim|min_length[3]|max_length[100]');
+            $this->form_validation->set_rules('quantite','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('prixachat','', 'trim|min_length[1]|max_length[100]|numeric');
+            $this->form_validation->set_rules('margeht','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('tax','', 'trim|min_length[1]|max_length[100]');
+            $this->form_validation->set_rules('reference','', 'trim|min_length[1]|max_length[100]|numeric');
             if ($this->form_validation->run() == false ) {
                 $this->AjouterProduit($da);
             } else {

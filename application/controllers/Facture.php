@@ -79,6 +79,7 @@ class Facture extends CI_Controller {
             $datpermanante = array(
                 'id_client' => $data[0]->id_client,
                 'id_facture' => $data[0]->id_client,
+                'id_admin'=>$_SESSION['user_id']
             );
             $numeroDevis = $this->Factur_M->addFacturepermanant($datpermanante);
             foreach ($data as $data) {
@@ -165,6 +166,9 @@ class Facture extends CI_Controller {
             $this->pdf->Text(8, 48, $set[0]->adresse);
             $this->pdf->Text(8, 53, $set[0]->ville);
             $this->pdf->Text(8, 58, $set[0]->code_postal);
+            $this->pdf->Text(8,63,'MF : 1051752A/A/c/000' ) ;
+            $this->pdf->Text(8,68,'RC : A812271020/4' ) ;
+            $this->pdf->Text(8,73,'CCB : 01078105111002744893 ' ) ;
             $this->pdf->Ln(10);
             $this->pdf->Ln(10);
             $this->pdf->Ln(10);
@@ -174,10 +178,11 @@ class Facture extends CI_Controller {
 
             $this->pdf->SetTextColor(51,102,255) ;
             $this->pdf->SetFont('Times','B',15);
-            $this->pdf->Text(12, 75, 'Facture Numero : ', 0, 0, 'C');
+            $this->pdf->Text(12, 85, 'Facture Numero : ', 0, 0, 'C');
             $this->pdf->SetTextColor(0,0,0);
             $this->pdf->SetFont('Arial','',10);
-            $this->pdf->Text(60,75,$id,0,0,'C');
+            $this->pdf->Text(60,85,$id,0,0,'C');
+            $this->pdf->Ln(10);
             $this->pdf->Ln(10);
             $this->pdf->BasicTable($header, $data);
             foreach ($data as $data) {
@@ -190,7 +195,8 @@ class Facture extends CI_Controller {
             $this->pdf->SetFillColor(102 ,178, 255);
             $this->pdf->RoundedRect(113, 230, 93, 50, 3.5, 'DF');
             $this->pdf->Text(115, 240, 'Montant Total A payee :' . $prixtotal . "  dinar");
-            $this->pdf->Text(115,250,'Net A Payer :'.$this->int2str($prixtotal).' DT');
+            $this->pdf->SetXY(115,250);
+            $this->pdf->MultiCell(90,5,'Net A Payer :'.$this->int2str($prixtotal).' DT');
 
             $this->pdf->SetY(-10);
             // Arial italic 8

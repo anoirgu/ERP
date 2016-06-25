@@ -63,6 +63,35 @@ $this->load->view('Template/Side_bar');
                 </div>
             </div>
         </div>
+        <?php if($_SESSION['isSysAdmin']==1){ ?>
+            <div class="row">
+                <div class="col-lg-1 col-xs-6"></div>
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3><?php echo $numadmin ;  ?></h3>
+
+                            <p>Admin</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="<?php echo base_url('GestionAdmin/Ajouter') ?>" class="small-box-footer">Ajouter Un Admin<i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="<?php echo base_url('GestionAdmin/Consulter') ?>" class="small-box-footer">Cosulter Liste Des Admins<i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                </div>
+            </div>
+
+         <?php } ?>
         <div class="row">
             <div class="col-lg-1 col-xs-6"></div>
             <div class="col-lg-3 col-xs-6">

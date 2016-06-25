@@ -16,7 +16,7 @@
                   <?php  echo form_open('Login/login');?>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="email" class="form-control" name="email" placeholder="email address" required>
+                            <input type="text" class="form-control" name="email" placeholder="username or  email address" required>
                         </div>
                         <span class="help-block"></span>
 

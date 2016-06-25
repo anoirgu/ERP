@@ -45,7 +45,7 @@ class Login extends CI_Controller
             // create the data object
             $data = new stdClass();
             // set validation rules
-            $this->form_validation->set_rules('email', '', 'trim|required|min_length[6]|max_length[50]|valid_email');
+            $this->form_validation->set_rules('email', '', 'trim|required|min_length[3]|max_length[50]');
             $this->form_validation->set_rules('password', '', 'required');
 
             if ($this->form_validation->run() == false) {
@@ -55,37 +55,74 @@ class Login extends CI_Controller
                 $this->load->view('Login/Login_Form', $data);
 
             } else {
-
                 // set variables from the form
                 $email = $this->input->post('email');
                 $password = $this->input->post('password');
 
-                if ($this->Login_M->resolve_user_login($email, sha1($password)) == 0) {
+                 if(preg_match( " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ " , $email )){
 
-                    $user_id = $this->Login_M->get_user_id_from_username($email);
-                    $user = $this->Login_M->get_user($user_id);
+                     if ($this->Login_M->resolve_user_login($email, sha1($password)) == 0) {
 
-                    // set session user data
-                    $_SESSION['user_id'] = (int)$user->id;
-                    $_SESSION['email'] = (string)$user->email;
-                    $_SESSION['logged_in'] = (bool)true;
-                    $_SESSION['is_admin'] = (int)$user->admin;
-                    if ((int)$user->admin == 1) {
-                        // user login ok
-                        redirect('Dashboard');
+                         $user_id = $this->Login_M->get_user_id_from_email($email);
+                         $user = $this->Login_M->get_user($user_id);
 
-                    } else {
-                        //$this->load->view('Template/Employee_Default_Page');
-                        redirect('Login');
-                    }
-                } else {
+                         // set session user data
+                         $_SESSION['user_id'] = (int)$user->id;
+                         $_SESSION['username'] = (string)$user->username;
+                         $_SESSION['email'] = (string)$user->email;
+                         $_SESSION['logged_in'] = (bool)true;
+                         $_SESSION['is_admin'] = (int)$user->admin;
+                         $_SESSION['isSysAdmin'] = (int) $user->sysadmin;
+                         if ((int)$user->admin == 1) {
+                             // user login ok
+                             redirect('Dashboard');
 
-                    // login failed
-                    $data->error = "nom d'utilisateur ou mot de passe incorrect ";
-                    // send error to the view
-                    $this->load->view('Template/Header');
-                    $this->load->view('Login/Login_Form', $data);
-                }
+                         } else {
+                             //$this->load->view('Template/Employee_Default_Page');
+                             redirect('Login');
+                         }
+                     }
+                     else {
+
+                         // login failed
+                         $data->error = "nom d'utilisateur ou mot de passe incorrect ";
+                         // send error to the view
+                         $this->load->view('Template/Header');
+                         $this->load->view('Login/Login_Form', $data);
+                     }
+                 }else{
+
+                     if ($this->Login_M->resolve_user_login_username($email, sha1($password)) == 0) {
+
+                         $user_id = $this->Login_M->get_user_id_from_username($email);
+                         $user = $this->Login_M->get_user($user_id);
+
+                         // set session user data
+                         $_SESSION['user_id'] = (int)$user->id;
+                         $_SESSION['username'] = (string)$user->username; 
+                         $_SESSION['email'] = (string)$user->email;
+                         $_SESSION['logged_in'] = (bool)true;
+                         $_SESSION['is_admin'] = (int)$user->admin;
+                         $_SESSION['isSysAdmin'] = (int) $user->sysadmin;
+                         if ((int)$user->admin == 1) {
+                             // user login ok
+                             redirect('Dashboard');
+
+                         } else {
+                             //$this->load->view('Template/Employee_Default_Page');
+                             redirect('Login');
+                         }
+                     }
+                     else {
+
+                         // login failed
+                         $data->error = "nom d'utilisateur ou mot de passe incorrect ";
+                         // send error to the view
+                         $this->load->view('Template/Header');
+                         $this->load->view('Login/Login_Form', $data);
+                     }
+
+                 }
             }
 
         }

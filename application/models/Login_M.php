@@ -41,6 +41,16 @@ class Login_M extends CI_Model {
         return strcmp($password,$hash);
 
     }
+    public function resolve_user_login_username($email, $password) {
+
+        $this->db->select('password');
+        $this->db->from('users');
+        $this->db->where('username', $email);
+        $hash = $this->db->get()->row('password');
+
+        return strcmp($password,$hash);
+
+    }
 
     /**
      * get_user_id_from_username function.
@@ -49,11 +59,20 @@ class Login_M extends CI_Model {
      * @param mixed $username
      * @return int the user id
      */
-    public function get_user_id_from_username($email) {
+    public function get_user_id_from_email($email) {
 
         $this->db->select('id');
         $this->db->from('users');
         $this->db->where('email', $email);
+
+        return $this->db->get()->row('id');
+
+    }
+    public function get_user_id_from_username($email) {
+
+        $this->db->select('id');
+        $this->db->from('users');
+        $this->db->where('username', $email);
 
         return $this->db->get()->row('id');
 

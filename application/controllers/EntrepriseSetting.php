@@ -44,21 +44,10 @@ class  EntrepriseSetting extends CI_Controller {
         $this->form_validation->set_rules('NumeroMobile','', 'trim|min_length[3]|max_length[50]|numeric');
         $this->form_validation->set_rules('NumFax','', 'trim|min_length[3]|max_length[50]|numeric');
         $this->form_validation->set_rules('Adrmail','', 'trim|min_length[3]|max_length[50]');
-        $config =  array(
-            'upload_path'     => "./uploads/",
-            'allowed_types'   => "gif|jpg|png|jpeg|pdf",
-            'overwrite'       => TRUE,
-            'max_size'        => "2048000",  // Can be set to particular file size
-            'max_height'      => "768",
-            'max_width'       => "1024"
-        );
-        $this->load->library('upload', $config);
 
-        if ($this->form_validation->run() == false || ! $this->upload->do_upload() ){
-           $da->error = $this->upload->display_errors() ;
+        if ($this->form_validation->run() == false ){
             $this->index($da) ;
         }else{
-            $finfo=$this->upload->data();
             $EntName = $this->input->post('EntName') ;
             $FormJuridique = $this->input->post('FormJuridique') ;
             $RaisSocial = $this->input->post('RaisSocial') ;
@@ -88,7 +77,6 @@ class  EntrepriseSetting extends CI_Controller {
                 'n_tel_mobil'=>$NumeroMobile,
                 'n_fax'=>$NumFax,
                 'email'=>$Adrmail,
-                'logo'=>$finfo['file_name']
             );
             $this->load->model('Ent_Seting_M') ;
             $array = $this->Ent_Seting_M->get_configuration();

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 14, 2016 at 01:53 AM
+-- Generation Time: Jun 25, 2016 at 02:45 AM
 -- Server version: 5.7.12-0ubuntu1
 -- PHP Version: 7.0.4-7ubuntu2.1
 
@@ -40,7 +40,8 @@ CREATE TABLE `adresse_livraison_client` (
 --
 
 INSERT INTO `adresse_livraison_client` (`id`, `adresse`, `code_postal`, `ville`, `pays`, `id_client`) VALUES
-(1, 'Sfax ,Cite El BAhri', -3, 'dlnfbnj', 'dlfbnj', 1);
+(1, 'Sfax ,Cite El BAhri', -3, 'dlnfbnj', 'dlfbnj', 1),
+(2, '', 0, '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -59,6 +60,23 @@ CREATE TABLE `bonliv` (
   `prixht` float NOT NULL,
   `prixtotalttc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bonliv`
+--
+
+INSERT INTO `bonliv` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerobonliv`, `remise`, `prixht`, `prixtotalttc`) VALUES
+(1, 'buiscuit', 23.6, 3, 1, 1, 0, 20, 70.8),
+(2, 'buiscuit', 23.6, 2, 1, 1, 0, 20, 47.2),
+(3, 'buiscuit', 23.6, 10, 1, 1, 0, 20, 236),
+(4, 'dddddddddddddddddddddddddddddd', 27.14, 2, 1, 2, 0, 23, 54.28),
+(5, 'buiscuit', 23.6, 2, 1, 3, 0, 20, 47.2),
+(6, 'dddddddddddddddddddddddddddddd', 27.14, 1, 1, 3, 0, 23, 27.14),
+(7, 'dddddddddddddddddddddddddddddd', 27.14, 1, 1, 4, 0, 23, 27.14),
+(8, 'dddddddddddddddddddddddddddddd', 27.14, 1, 1, 4, 0, 23, 27.14),
+(9, 'dddddddddddddddddddddddddddddd', 27.14, 3, 1, 5, 0, 23, 81.42),
+(10, 'dddddddddddddddddddddddddddddd', 27.14, 3, 1, 6, 0, 23, 81.42),
+(11, 'buiscuit', 23.6, 3, 1, 7, 0, 20, 70.8);
 
 -- --------------------------------------------------------
 
@@ -87,8 +105,22 @@ CREATE TABLE `bonlivraisonpermanat` (
   `numerobonliv` int(50) NOT NULL,
   `datebon` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_client` int(30) NOT NULL,
-  `id_bon` int(30) NOT NULL
+  `id_bon` int(30) NOT NULL,
+  `id_admin` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bonlivraisonpermanat`
+--
+
+INSERT INTO `bonlivraisonpermanat` (`numerobonliv`, `datebon`, `id_client`, `id_bon`, `id_admin`) VALUES
+(1, '2016-06-21 22:07:19', 1, 1, 0),
+(2, '2016-06-21 22:30:20', 1, 1, 3),
+(3, '2016-06-21 22:32:41', 1, 1, 3),
+(4, '2016-06-21 22:43:13', 1, 1, 0),
+(5, '2016-06-24 22:30:14', 1, 1, 4),
+(6, '2016-06-24 22:46:29', 1, 1, 4),
+(7, '2016-06-24 22:47:10', 1, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -121,7 +153,8 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `statut`, `civilite`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `pays`, `telephone`, `mobile`, `fax`, `email`, `activite`, `code_ape`, `date_creation`, `raisonsocial`) VALUES
-(1, 'client', 'Mr', 'anoir', 'gu', 'Sfax ,cite El BAhri', 4, 'Sfax', 'TUNISIE', 0, 0, 0, '', 'test', 4, '2016-06-09 10:31:46', 'capitol soft');
+(1, 'client', 'Mr', 'anoir', 'gu', 'Sfax ,cite El BAhri', 4, 'Sfax', 'TUNISIE', 0, 0, 0, '', 'test', 4, '2016-06-09 10:31:46', 'capitol soft'),
+(2, 'client', 'Mr', '', '', '', 0, '', '', 0, 0, 0, '', '', 0, '2016-06-22 11:03:49', '');
 
 -- --------------------------------------------------------
 
@@ -152,7 +185,8 @@ INSERT INTO `devis` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, 
 (4, 'gouchou', 24, 0, 1, 4, 0, 20, 0),
 (5, 'buiscuit', 23.6, 2, 1, 5, 0, 20, 47.2),
 (6, 'buiscuit', 23.6, 2, 1, 6, 0, 20, 47.2),
-(7, 'buiscuit', 23.6, 2, 1, 7, 0, 20, 47.2);
+(7, 'buiscuit', 23.6, 2, 1, 7, 0, 20, 47.2),
+(8, 'dddddddddddddddddddddddddddddd', 27.14, 2, 1, 8, 0, 23, 54.28);
 
 -- --------------------------------------------------------
 
@@ -164,21 +198,23 @@ CREATE TABLE `devispermanant` (
   `numerodevis` int(30) NOT NULL,
   `datedevis` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_client` int(30) NOT NULL,
-  `id_devis` int(30) NOT NULL
+  `id_devis` int(30) NOT NULL,
+  `id_admin` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `devispermanant`
 --
 
-INSERT INTO `devispermanant` (`numerodevis`, `datedevis`, `id_client`, `id_devis`) VALUES
-(1, '2016-06-09 11:05:59', 1, 1),
-(2, '2016-06-13 20:21:14', 1, 1),
-(3, '2016-06-13 21:54:54', 1, 1),
-(4, '2016-06-13 21:59:28', 1, 1),
-(5, '2016-06-13 23:27:25', 1, 1),
-(6, '2016-06-13 23:32:32', 1, 1),
-(7, '2016-06-13 23:35:13', 1, 1);
+INSERT INTO `devispermanant` (`numerodevis`, `datedevis`, `id_client`, `id_devis`, `id_admin`) VALUES
+(1, '2016-06-09 11:05:59', 1, 1, 3),
+(2, '2016-06-13 20:21:14', 1, 1, 3),
+(3, '2016-06-13 21:54:54', 1, 1, 0),
+(4, '2016-06-13 21:59:28', 1, 1, 0),
+(5, '2016-06-13 23:27:25', 1, 1, 0),
+(6, '2016-06-13 23:32:32', 1, 1, 0),
+(7, '2016-06-13 23:35:13', 1, 1, 0),
+(8, '2016-06-22 10:41:26', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -221,7 +257,8 @@ CREATE TABLE `facture` (
 
 INSERT INTO `facture` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerofacture`, `remise`, `prixht`, `prixtotalttc`) VALUES
 (3, 'buiscuit', 21.6, 2, 1, 3, 2, 18.3051, 0),
-(4, 'buiscuit', 23.6, 2, 1, 4, 0, 20, 47.2);
+(4, 'buiscuit', 23.6, 2, 1, 4, 0, 20, 47.2),
+(5, 'dddddddddddddddddddddddddddddd', 27.14, 2, 1, 5, 0, 23, 54.28);
 
 -- --------------------------------------------------------
 
@@ -233,16 +270,18 @@ CREATE TABLE `facturepermanant` (
   `numerofacture` int(30) NOT NULL,
   `datefacture` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_client` int(30) NOT NULL,
-  `id_facture` int(30) NOT NULL
+  `id_facture` int(30) NOT NULL,
+  `id_admin` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturepermanant`
 --
 
-INSERT INTO `facturepermanant` (`numerofacture`, `datefacture`, `id_client`, `id_facture`) VALUES
-(3, '2016-06-13 22:41:10', 1, 1),
-(4, '2016-06-13 23:15:20', 1, 1);
+INSERT INTO `facturepermanant` (`numerofacture`, `datefacture`, `id_client`, `id_facture`, `id_admin`) VALUES
+(3, '2016-06-13 22:41:10', 1, 1, 3),
+(4, '2016-06-13 23:15:20', 1, 1, 3),
+(5, '2016-06-22 10:41:55', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -316,7 +355,8 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`idp`, `designation`, `prix_achat`, `marge_ht`, `taxe`, `prixventettc`, `quantite`, `id_fournisseur`, `logo`, `date_creation`, `reference`) VALUES
 (4, 'gouchou', '20', '18', '0', '23.6', 0, 1, '', '2016-06-13 00:39:35', 22),
-(5, 'buiscuit', '20', '18', '0', '23.6', 23, 1, '', '2016-06-13 22:03:22', 22222);
+(5, 'buiscuit', '20', '18', '0', '23.6', 3, 1, '', '2016-06-13 22:03:22', 22222),
+(6, 'dddddddddddddddddddddddddddddddddddddddd', '23', '18', '0', '27.14', 3, 1, '', '2016-06-21 22:30:04', 22);
 
 -- --------------------------------------------------------
 
@@ -370,7 +410,7 @@ CREATE TABLE `societe_Inf` (
 --
 
 INSERT INTO `societe_Inf` (`id`, `nom`, `form_juridique`, `raison_social`, `adresse`, `code_postal`, `ville`, `n_tva_intra`, `code_ape`, `rcs`, `n_siret`, `n_tel_fix`, `n_tel_mobil`, `n_fax`, `email`, `logo`) VALUES
-(1, 'tesdvlkdfbt', 'test', 'test', 'etst', 222, 'shsh', 2222, 2222222, '22222', 2147483647, 8888, 888888, 888888, 'fff@ff.com', '9_260.jpg');
+(1, 'GPR hammami', 'test', 'test', 'etst', 222, 'shsh', 2222, 2222222, '22222', 2147483647, 8888, 888888, 888888, 'fff@ff.com', '9_260.jpg');
 
 -- --------------------------------------------------------
 
@@ -380,17 +420,21 @@ INSERT INTO `societe_Inf` (`id`, `nom`, `form_juridique`, `raison_social`, `adre
 
 CREATE TABLE `users` (
   `id` int(23) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `admin` int(11) NOT NULL DEFAULT '0'
+  `admin` int(11) NOT NULL DEFAULT '1',
+  `sysadmin` int(30) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `admin`) VALUES
-(1, 'admin@admin.com', '011c945f30ce2cbafc452f39840f025693339c42', 1);
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `admin`, `sysadmin`) VALUES
+(1, 'admin', 'admin@admin.com', '011c945f30ce2cbafc452f39840f025693339c42', 1, 1),
+(3, 'anoirgu', 'anoirboss@gmail.com', '011c945f30ce2cbafc452f39840f025693339c42', 1, 0),
+(4, 'guesmi anoir', '', '011c945f30ce2cbafc452f39840f025693339c42', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -509,57 +553,57 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `adresse_livraison_client`
 --
 ALTER TABLE `adresse_livraison_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `bonliv`
 --
 ALTER TABLE `bonliv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `bonlivraison`
 --
 ALTER TABLE `bonlivraison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `bonlivraisonpermanat`
 --
 ALTER TABLE `bonlivraisonpermanat`
-  MODIFY `numerobonliv` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `numerobonliv` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `devis`
 --
 ALTER TABLE `devis`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `devispermanant`
 --
 ALTER TABLE `devispermanant`
-  MODIFY `numerodevis` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `numerodevis` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `devistemporaire`
 --
 ALTER TABLE `devistemporaire`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `facturepermanant`
 --
 ALTER TABLE `facturepermanant`
-  MODIFY `numerofacture` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `numerofacture` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `facturetemporaire`
 --
 ALTER TABLE `facturetemporaire`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `fournisseur`
 --
@@ -569,7 +613,7 @@ ALTER TABLE `fournisseur`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `idp` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idp` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `setting`
 --
@@ -579,7 +623,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(23) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(23) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --

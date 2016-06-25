@@ -50,12 +50,12 @@ class Client_M extends CI_Model {
         $query = $this->db->get('client');
         return $query->result() ;
     }
-    public function updateprofile($data){
-        $this->db->where('id' ,1);
+    public function updateprofile($id,$data){
+        $this->db->where('id' ,$id);
         $this->db->update('users', $data);
     }
-    public function getInf(){
-        $query = $this->db->query("Select * from users") ;
+    public function getInf($id){
+        $query = $this->db->query("Select * from users WHERE id='$id'") ;
         return $query->result() ;
     }
     public function count_client(){

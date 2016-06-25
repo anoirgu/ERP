@@ -15,9 +15,11 @@ class Dashboard extends CI_Controller {
         else{
             $this->load->model('Client_M');
             $this->load->model('Product_M') ;
+            $this->load->model('Admin_M') ; 
             $data['numberClient'] = $this->Client_M->count_client();
             $data['numberFourni'] = $this->Product_M->count_Fournisseur() ; 
             $data['numberProduit'] = $this->Product_M->count_Produit() ;
+            $data['numadmin'] = $this->Admin_M->count_Admin() ;
             $this->load->view('Dashboard',$data) ;
         }
     }
@@ -36,7 +38,7 @@ class Dashboard extends CI_Controller {
             redirect('Login') ;
         else{
             $this->load->model('Client_M') ; 
-            $data['profile'] = $this->Client_M->getInf() ;
+            $data['profile'] = $this->Client_M->getInf($_SESSION['user_id']) ;
             $this->load->view('UpdateProfile',$data) ;
         }
         
@@ -45,20 +47,24 @@ class Dashboard extends CI_Controller {
     }
     public function miseaJourProfile(){
         $da  =new stdClass() ;
+        $this->form_validation->set_rules('username','', 'trim|min_length[3]|max_length[50]|required');
         $this->form_validation->set_rules('mail','', 'trim|min_length[3]|max_length[50]');
         $this->form_validation->set_rules('password','', 'trim|min_length[4]|max_length[50]');
         $this->form_validation->set_rules('repassword','', 'trim|min_length[4]|max_length[50]|matches[password]');
         if ($this->form_validation->run() == false ){
             $this->updateProfile($da);
         }else{
+            $id = $this->input->post('id'); 
+            $username = $this->input->post('username');
             $mail = $this->input->post('mail') ;
             $password = $this->input->post('password') ;
                 $data = array(
+                    'username'=>$username,
                     'email'=>$mail,
                     'password'=>sha1($password)
                 );
                 $this->load->model('Client_M') ;
-                $this->Client_M->updateprofile($data) ;
+                $this->Client_M->updateprofile($id,$data) ;
                 redirect('Dashboard');
 
             }

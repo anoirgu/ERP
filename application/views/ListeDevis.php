@@ -28,8 +28,8 @@ $this->load->view('Template/Side_bar');
                                     <th aria-label="Numero Du Devis  : activate to sort column ascending" style="width: 105px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Numero Du Devis</th>
                                     <th aria-label="Client : activate to sort column ascending" style="width: 180px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Client</th>
                                     <th aria-sort="Imprimer " aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Imprimer</th>
-                                    <th aria-sort="Supprimer" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Supprimer</th>
-                                </tr>
+                                    <?php if($_SESSION['isSysAdmin']==1){ ?>   <th aria-sort="Supprimer" aria-label="Fonction: activate to sort column ascending" style="width: 161px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_desc">Supprimer</th>
+                                    <?php }?>  </tr>
                                 </thead>
                                 <tbody>
                                 <?php foreach ($listDevis as $listebon){ ?>
@@ -38,9 +38,9 @@ $this->load->view('Template/Side_bar');
                                         <td><?php echo $listebon->nom." ".$listebon->prenom ;?></td>
                                         <td> <a href="<?php echo base_url('Devis/Imprimer/'.$listebon->numerodevis); ?>">
                                                 <i class="fa fa-print"></i></a>  </td>
-                                        <td> <a href="<?php echo base_url('Devis/suprimerDevis/'.$listebon->numerodevis); ?>">
+                                        <?php if($_SESSION['isSysAdmin']==1){ ?>    <td> <a href="<?php echo base_url('Devis/suprimerDevis/'.$listebon->numerodevis); ?>">
                                                 <i class="fa fa-trash-o"></i></a></td>
-
+                                        <?php }?>
 
                                     </tr>
                                 <?php } ?>

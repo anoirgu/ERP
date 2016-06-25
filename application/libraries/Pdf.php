@@ -44,11 +44,19 @@ require('fpdf.php');
          $this->SetTextColor(0);
          $this->SetFont('');
          // Données
+         $n = 100;
          foreach($data as $row)
          {
              foreach($row as $col)
-                 $this->Cell(26,6,$col,0);
+                 if(strlen($col)>25){
+                     $this->MultiCell(24,5,$col);
+                     $this->SetXY(42,$n);
+                     $n =$n+5 ;
+                 }else {
+                 $this->Cell(25,6,$col,0);}
              $this->Ln();
+             $this->Ln();
+             $n= $n + 10 ;
          }
          // Trait de terminaison
 

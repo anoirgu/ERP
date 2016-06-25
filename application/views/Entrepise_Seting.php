@@ -239,21 +239,7 @@ $this->load->view('Template/Side_bar');
 
                                     </div>
                                 </div>
-
-
-                                <br>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label"
-                                           for="ln">Telecharger une Image</label>
-
-                                    <div class="col-lg-8">
-                                    <input type='file' name='userfile' size='20' id='file' class="form-control "
-                                               required />
-                                                 </div>
-                                </div>
-
-                               </div>
-                               </div><br>
+                               <br>
                                 </div>
                                 </div>
                               <div class="form-group">
@@ -276,7 +262,6 @@ $this->load->view('Template/Side_bar');
         <?php } else { ?>
             <div class="panel panel-default">
                 <div class="panel-body">
-              <center><img src="./uploads/<?php  echo $setting[0]->logo ;  ?>" class="img-fluid" alt="Responsive image" style="height:210px; width:557px  "></center><br>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="panel  panel-danger">
@@ -613,16 +598,6 @@ $this->load->view('Template/Side_bar');
 
                                                     </div>
                                                 </div>
-                                                <br>
-                                                <div class="form-group">
-                                                <label class="col-md-4 control-label"
-                                                  for="ln">Telecharger une Image</label>
-
-                                               <div class="col-lg-8">
-                                               <input type='file' name='userfile' size='20' id='file' class="form-control "
-                                               required />
-                                                 </div>
-                                               </div>
                                                  <br>
                                                  </div>
                                                  </div>
@@ -632,7 +607,7 @@ $this->load->view('Template/Side_bar');
 
                                                     <div class="col-md-4">
                                                         <button id="submit" name="submit"
-                                                                class="btn btn-primary btn-block">Mise A jour
+                                                                class="btn btn-primary btn-block">Valider
                                                         </button>
                                                     </div>
                                                 </div>

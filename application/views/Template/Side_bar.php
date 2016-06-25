@@ -7,7 +7,7 @@
                 <img src="<?php echo base_url();?>/assets/img/avatar5.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Admin</p>
+                <p><?php echo $_SESSION['username'] ;?></p>
                 <a href="#"><i class="fa fa-circle text-success"></i> En ligne</a>
             </div>
         </div>
@@ -20,6 +20,16 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="<?php if ( $this->uri->uri_string() == 'EntrepriseSetting'){echo "active";} ?>"> <a href="<?php echo base_url('EntrepriseSetting')?>" ><i class="fa fa-info-circle"></i>Information du Societe</a></li>
+                   <?php if($_SESSION['isSysAdmin']==1){ ?>
+                       <li class="treeview ">
+                           <a href="#"><i class="fa  fa-user"></i> Gestion Des Admins  <i class="fa fa-angle-left pull-right"></i></a>
+                           <ul class="treeview-menu">
+                               <li class="<?php if ( $this->uri->uri_string() == 'GestionAdmin/Ajouter'){echo "active";} ?>"><a  href="<?php echo base_url('GestionAdmin/Ajouter')?>"><i class="fa  fa-user-plus"></i> Ajouter Un Admin</a></li>
+                               <li class="<?php if ( $this->uri->uri_string() == 'GestionAdmin/Consulter'){echo "active";} ?>"><a  href="<?php echo site_url('GestionAdmin/Consulter')?>"><i class="fa fa-eye"></i>Consulter liste des Admins</a></li>
+                           </ul>
+                       </li>
+                   
+                   <?php  }?>
                     <li class="treeview ">
                         <a href="#"><i class="fa  fa-user"></i> Gestion Du Client <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
