@@ -159,8 +159,8 @@ $this->load->view('Template/Side_bar');
                     <div class="icon">
                         <i class="ion ion-plus"></i>
                     </div>
-                    <a href="<?php echo base_url('') ?>" class="small-box-footer">Ajouter Un Bon De Commande <i class="fa fa-arrow-circle-right"></i></a>
-                    <a href="<?php echo base_url('') ?>" class="small-box-footer">Liste du Bon De Commande <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('BonCommande/AjouterBonCommande') ?>" class="small-box-footer">Ajouter Un Bon De Commande <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url('BonCommande/ConsulterBonCommande') ?>" class="small-box-footer">Liste du Bon De Commande <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
