@@ -56,7 +56,7 @@ require('fpdf.php');
                  $this->Cell(25,6,$col,0);}
              $this->Ln();
              $this->Ln();
-             $n= $n + 10 ;
+             $n= $n + 15 ;
          }
          // Trait de terminaison
 

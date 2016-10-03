@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 25, 2016 at 02:45 AM
--- Server version: 5.7.12-0ubuntu1
--- PHP Version: 7.0.4-7ubuntu2.1
+-- Client :  localhost
+-- Généré le :  Lun 03 Octobre 2016 à 23:05
+-- Version du serveur :  5.7.15-0ubuntu0.16.04.1
+-- Version de PHP :  7.0.8-0ubuntu0.16.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `erp`
+-- Base de données :  `erp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adresse_livraison_client`
+-- Structure de la table `adresse_livraison_client`
 --
 
 CREATE TABLE `adresse_livraison_client` (
@@ -36,7 +36,7 @@ CREATE TABLE `adresse_livraison_client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `adresse_livraison_client`
+-- Contenu de la table `adresse_livraison_client`
 --
 
 INSERT INTO `adresse_livraison_client` (`id`, `adresse`, `code_postal`, `ville`, `pays`, `id_client`) VALUES
@@ -46,7 +46,70 @@ INSERT INTO `adresse_livraison_client` (`id`, `adresse`, `code_postal`, `ville`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bonliv`
+-- Structure de la table `boncommande`
+--
+
+CREATE TABLE `boncommande` (
+  `id` int(30) NOT NULL,
+  `designation` varchar(30) NOT NULL,
+  `prixvente` float NOT NULL,
+  `quantite` int(30) NOT NULL,
+  `id_client` int(30) NOT NULL,
+  `numeroboncommande` int(30) NOT NULL,
+  `remise` int(30) NOT NULL,
+  `prixht` float NOT NULL,
+  `prixtotalttc` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `boncommande`
+--
+
+INSERT INTO `boncommande` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numeroboncommande`, `remise`, `prixht`, `prixtotalttc`) VALUES
+(0, 'buiscuit', 23.6, 2, 1, 0, 0, 20, 47.2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `boncommandepermanant`
+--
+
+CREATE TABLE `boncommandepermanant` (
+  `numeroboncommande` int(30) NOT NULL,
+  `dateboncommande` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_client` int(30) NOT NULL,
+  `id_boncommande` int(30) NOT NULL,
+  `id_admin` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `boncommandepermanant`
+--
+
+INSERT INTO `boncommandepermanant` (`numeroboncommande`, `dateboncommande`, `id_client`, `id_boncommande`, `id_admin`) VALUES
+(0, '2016-10-03 20:56:40', 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `boncommandetemporaire`
+--
+
+CREATE TABLE `boncommandetemporaire` (
+  `id` int(30) NOT NULL,
+  `designation` varchar(30) NOT NULL,
+  `prixvente` float NOT NULL,
+  `quantite` int(30) NOT NULL,
+  `id_client` int(30) NOT NULL,
+  `remise` int(30) NOT NULL,
+  `prixht` double NOT NULL,
+  `prixtotalttc` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `bonliv`
 --
 
 CREATE TABLE `bonliv` (
@@ -62,7 +125,7 @@ CREATE TABLE `bonliv` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bonliv`
+-- Contenu de la table `bonliv`
 --
 
 INSERT INTO `bonliv` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerobonliv`, `remise`, `prixht`, `prixtotalttc`) VALUES
@@ -81,7 +144,7 @@ INSERT INTO `bonliv` (`id`, `designation`, `prixvente`, `quantite`, `id_client`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bonlivraison`
+-- Structure de la table `bonlivraison`
 --
 
 CREATE TABLE `bonlivraison` (
@@ -98,7 +161,7 @@ CREATE TABLE `bonlivraison` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bonlivraisonpermanat`
+-- Structure de la table `bonlivraisonpermanat`
 --
 
 CREATE TABLE `bonlivraisonpermanat` (
@@ -110,7 +173,7 @@ CREATE TABLE `bonlivraisonpermanat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `bonlivraisonpermanat`
+-- Contenu de la table `bonlivraisonpermanat`
 --
 
 INSERT INTO `bonlivraisonpermanat` (`numerobonliv`, `datebon`, `id_client`, `id_bon`, `id_admin`) VALUES
@@ -125,7 +188,7 @@ INSERT INTO `bonlivraisonpermanat` (`numerobonliv`, `datebon`, `id_client`, `id_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
+-- Structure de la table `client`
 --
 
 CREATE TABLE `client` (
@@ -149,7 +212,7 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `client`
+-- Contenu de la table `client`
 --
 
 INSERT INTO `client` (`id`, `statut`, `civilite`, `nom`, `prenom`, `adresse`, `code_postal`, `ville`, `pays`, `telephone`, `mobile`, `fax`, `email`, `activite`, `code_ape`, `date_creation`, `raisonsocial`) VALUES
@@ -159,7 +222,7 @@ INSERT INTO `client` (`id`, `statut`, `civilite`, `nom`, `prenom`, `adresse`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `devis`
+-- Structure de la table `devis`
 --
 
 CREATE TABLE `devis` (
@@ -175,15 +238,11 @@ CREATE TABLE `devis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `devis`
+-- Contenu de la table `devis`
 --
 
 INSERT INTO `devis` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerodevis`, `remise`, `prixht`, `prixtotalttc`) VALUES
 (1, 'gouchou', 23, 2, 1, 1, 0, 0, 0),
-(2, 'gouchou', 24, 1, 1, 2, 0, 19, 0),
-(3, 'gouchou', 24, 0, 1, 3, 0, 20, 0),
-(4, 'gouchou', 24, 0, 1, 4, 0, 20, 0),
-(5, 'buiscuit', 23.6, 2, 1, 5, 0, 20, 47.2),
 (6, 'buiscuit', 23.6, 2, 1, 6, 0, 20, 47.2),
 (7, 'buiscuit', 23.6, 2, 1, 7, 0, 20, 47.2),
 (8, 'dddddddddddddddddddddddddddddd', 27.14, 2, 1, 8, 0, 23, 54.28);
@@ -191,7 +250,7 @@ INSERT INTO `devis` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `devispermanant`
+-- Structure de la table `devispermanant`
 --
 
 CREATE TABLE `devispermanant` (
@@ -203,15 +262,11 @@ CREATE TABLE `devispermanant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `devispermanant`
+-- Contenu de la table `devispermanant`
 --
 
 INSERT INTO `devispermanant` (`numerodevis`, `datedevis`, `id_client`, `id_devis`, `id_admin`) VALUES
 (1, '2016-06-09 11:05:59', 1, 1, 3),
-(2, '2016-06-13 20:21:14', 1, 1, 3),
-(3, '2016-06-13 21:54:54', 1, 1, 0),
-(4, '2016-06-13 21:59:28', 1, 1, 0),
-(5, '2016-06-13 23:27:25', 1, 1, 0),
 (6, '2016-06-13 23:32:32', 1, 1, 0),
 (7, '2016-06-13 23:35:13', 1, 1, 0),
 (8, '2016-06-22 10:41:26', 1, 1, 0);
@@ -219,7 +274,7 @@ INSERT INTO `devispermanant` (`numerodevis`, `datedevis`, `id_client`, `id_devis
 -- --------------------------------------------------------
 
 --
--- Table structure for table `devistemporaire`
+-- Structure de la table `devistemporaire`
 --
 
 CREATE TABLE `devistemporaire` (
@@ -236,7 +291,7 @@ CREATE TABLE `devistemporaire` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `facture`
+-- Structure de la table `facture`
 --
 
 CREATE TABLE `facture` (
@@ -252,18 +307,19 @@ CREATE TABLE `facture` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `facture`
+-- Contenu de la table `facture`
 --
 
 INSERT INTO `facture` (`id`, `designation`, `prixvente`, `quantite`, `id_client`, `numerofacture`, `remise`, `prixht`, `prixtotalttc`) VALUES
 (3, 'buiscuit', 21.6, 2, 1, 3, 2, 18.3051, 0),
 (4, 'buiscuit', 23.6, 2, 1, 4, 0, 20, 47.2),
-(5, 'dddddddddddddddddddddddddddddd', 27.14, 2, 1, 5, 0, 23, 54.28);
+(5, 'dddddddddddddddddddddddddddddd', 27.14, 2, 1, 5, 0, 23, 54.28),
+(6, 'buiscuit', 21.6, 1, 1, 6, 2, 18.3051, 21.6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `facturepermanant`
+-- Structure de la table `facturepermanant`
 --
 
 CREATE TABLE `facturepermanant` (
@@ -275,18 +331,19 @@ CREATE TABLE `facturepermanant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `facturepermanant`
+-- Contenu de la table `facturepermanant`
 --
 
 INSERT INTO `facturepermanant` (`numerofacture`, `datefacture`, `id_client`, `id_facture`, `id_admin`) VALUES
 (3, '2016-06-13 22:41:10', 1, 1, 3),
 (4, '2016-06-13 23:15:20', 1, 1, 3),
-(5, '2016-06-22 10:41:55', 1, 1, 0);
+(5, '2016-06-22 10:41:55', 1, 1, 0),
+(6, '2016-09-23 22:03:27', 1, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `facturetemporaire`
+-- Structure de la table `facturetemporaire`
 --
 
 CREATE TABLE `facturetemporaire` (
@@ -303,7 +360,7 @@ CREATE TABLE `facturetemporaire` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fournisseur`
+-- Structure de la table `fournisseur`
 --
 
 CREATE TABLE `fournisseur` (
@@ -323,7 +380,7 @@ CREATE TABLE `fournisseur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `fournisseur`
+-- Contenu de la table `fournisseur`
 --
 
 INSERT INTO `fournisseur` (`id`, `nom`, `prenom`, `raisonsocial`, `adresse`, `code_postal`, `pays`, `ville`, `telephone`, `mobile`, `fax`, `email`, `date_creation`) VALUES
@@ -332,7 +389,7 @@ INSERT INTO `fournisseur` (`id`, `nom`, `prenom`, `raisonsocial`, `adresse`, `co
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Structure de la table `product`
 --
 
 CREATE TABLE `product` (
@@ -350,7 +407,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `product`
+-- Contenu de la table `product`
 --
 
 INSERT INTO `product` (`idp`, `designation`, `prix_achat`, `marge_ht`, `taxe`, `prixventettc`, `quantite`, `id_fournisseur`, `logo`, `date_creation`, `reference`) VALUES
@@ -361,7 +418,7 @@ INSERT INTO `product` (`idp`, `designation`, `prix_achat`, `marge_ht`, `taxe`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `setting`
+-- Structure de la table `setting`
 --
 
 CREATE TABLE `setting` (
@@ -374,7 +431,7 @@ CREATE TABLE `setting` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `setting`
+-- Contenu de la table `setting`
 --
 
 INSERT INTO `setting` (`id`, `pieddevis`, `piedfacture`, `defaulttva`, `defaulttax`, `fraisport`) VALUES
@@ -383,7 +440,7 @@ INSERT INTO `setting` (`id`, `pieddevis`, `piedfacture`, `defaulttva`, `defaultt
 -- --------------------------------------------------------
 
 --
--- Table structure for table `societe_Inf`
+-- Structure de la table `societe_Inf`
 --
 
 CREATE TABLE `societe_Inf` (
@@ -406,7 +463,7 @@ CREATE TABLE `societe_Inf` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `societe_Inf`
+-- Contenu de la table `societe_Inf`
 --
 
 INSERT INTO `societe_Inf` (`id`, `nom`, `form_juridique`, `raison_social`, `adresse`, `code_postal`, `ville`, `n_tva_intra`, `code_ape`, `rcs`, `n_siret`, `n_tel_fix`, `n_tel_mobil`, `n_fax`, `email`, `logo`) VALUES
@@ -415,7 +472,7 @@ INSERT INTO `societe_Inf` (`id`, `nom`, `form_juridique`, `raison_social`, `adre
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -428,7 +485,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Contenu de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `admin`, `sysadmin`) VALUES
@@ -437,249 +494,281 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `admin`, `sysadmin`)
 (4, 'guesmi anoir', '', '011c945f30ce2cbafc452f39840f025693339c42', 1, 0);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables exportées
 --
 
 --
--- Indexes for table `adresse_livraison_client`
+-- Index pour la table `adresse_livraison_client`
 --
 ALTER TABLE `adresse_livraison_client`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `bonliv`
+-- Index pour la table `boncommande`
+--
+ALTER TABLE `boncommande`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_client` (`id_client`);
+
+--
+-- Index pour la table `boncommandepermanant`
+--
+ALTER TABLE `boncommandepermanant`
+  ADD PRIMARY KEY (`numeroboncommande`),
+  ADD KEY `id_client` (`id_client`);
+
+--
+-- Index pour la table `boncommandetemporaire`
+--
+ALTER TABLE `boncommandetemporaire`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `bonliv`
 --
 ALTER TABLE `bonliv`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `bonlivraison`
+-- Index pour la table `bonlivraison`
 --
 ALTER TABLE `bonlivraison`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `bonlivraisonpermanat`
+-- Index pour la table `bonlivraisonpermanat`
 --
 ALTER TABLE `bonlivraisonpermanat`
   ADD PRIMARY KEY (`numerobonliv`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `client`
+-- Index pour la table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `devis`
+-- Index pour la table `devis`
 --
 ALTER TABLE `devis`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `devispermanant`
+-- Index pour la table `devispermanant`
 --
 ALTER TABLE `devispermanant`
   ADD PRIMARY KEY (`numerodevis`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `devistemporaire`
+-- Index pour la table `devistemporaire`
 --
 ALTER TABLE `devistemporaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `facture`
+-- Index pour la table `facture`
 --
 ALTER TABLE `facture`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `facturepermanant`
+-- Index pour la table `facturepermanant`
 --
 ALTER TABLE `facturepermanant`
   ADD PRIMARY KEY (`numerofacture`),
   ADD KEY `id_client` (`id_client`);
 
 --
--- Indexes for table `facturetemporaire`
+-- Index pour la table `facturetemporaire`
 --
 ALTER TABLE `facturetemporaire`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `fournisseur`
+-- Index pour la table `fournisseur`
 --
 ALTER TABLE `fournisseur`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product`
+-- Index pour la table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`idp`),
   ADD KEY `id_fournisseur` (`id_fournisseur`);
 
 --
--- Indexes for table `setting`
+-- Index pour la table `setting`
 --
 ALTER TABLE `setting`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `societe_Inf`
+-- Index pour la table `societe_Inf`
 --
 ALTER TABLE `societe_Inf`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT for table `adresse_livraison_client`
+-- AUTO_INCREMENT pour la table `adresse_livraison_client`
 --
 ALTER TABLE `adresse_livraison_client`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `bonliv`
+-- AUTO_INCREMENT pour la table `bonliv`
 --
 ALTER TABLE `bonliv`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT for table `bonlivraison`
+-- AUTO_INCREMENT pour la table `bonlivraison`
 --
 ALTER TABLE `bonlivraison`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `bonlivraisonpermanat`
+-- AUTO_INCREMENT pour la table `bonlivraisonpermanat`
 --
 ALTER TABLE `bonlivraisonpermanat`
   MODIFY `numerobonliv` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `client`
+-- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `devis`
+-- AUTO_INCREMENT pour la table `devis`
 --
 ALTER TABLE `devis`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `devispermanant`
+-- AUTO_INCREMENT pour la table `devispermanant`
 --
 ALTER TABLE `devispermanant`
   MODIFY `numerodevis` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `devistemporaire`
+-- AUTO_INCREMENT pour la table `devistemporaire`
 --
 ALTER TABLE `devistemporaire`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `facture`
+-- AUTO_INCREMENT pour la table `facture`
 --
 ALTER TABLE `facture`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `facturepermanant`
+-- AUTO_INCREMENT pour la table `facturepermanant`
 --
 ALTER TABLE `facturepermanant`
-  MODIFY `numerofacture` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `numerofacture` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `facturetemporaire`
+-- AUTO_INCREMENT pour la table `facturetemporaire`
 --
 ALTER TABLE `facturetemporaire`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `fournisseur`
+-- AUTO_INCREMENT pour la table `fournisseur`
 --
 ALTER TABLE `fournisseur`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
   MODIFY `idp` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `setting`
+-- AUTO_INCREMENT pour la table `setting`
 --
 ALTER TABLE `setting`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(23) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `adresse_livraison_client`
+-- Contraintes pour la table `adresse_livraison_client`
 --
 ALTER TABLE `adresse_livraison_client`
   ADD CONSTRAINT `adresse_livraison_client_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `bonliv`
+-- Contraintes pour la table `boncommande`
+--
+ALTER TABLE `boncommande`
+  ADD CONSTRAINT `boncommande_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
+
+--
+-- Contraintes pour la table `boncommandepermanant`
+--
+ALTER TABLE `boncommandepermanant`
+  ADD CONSTRAINT `boncommandepermanant_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
+
+--
+-- Contraintes pour la table `bonliv`
 --
 ALTER TABLE `bonliv`
   ADD CONSTRAINT `bonliv_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`),
   ADD CONSTRAINT `bonliv_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `bonlivraison`
+-- Contraintes pour la table `bonlivraison`
 --
 ALTER TABLE `bonlivraison`
   ADD CONSTRAINT `bonlivraison_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `bonlivraisonpermanat`
+-- Contraintes pour la table `bonlivraisonpermanat`
 --
 ALTER TABLE `bonlivraisonpermanat`
   ADD CONSTRAINT `bonlivraisonpermanat_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `devis`
+-- Contraintes pour la table `devis`
 --
 ALTER TABLE `devis`
   ADD CONSTRAINT `devis_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `devispermanant`
+-- Contraintes pour la table `devispermanant`
 --
 ALTER TABLE `devispermanant`
   ADD CONSTRAINT `devispermanant_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`),
   ADD CONSTRAINT `devispermanant_ibfk_2` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `facture`
+-- Contraintes pour la table `facture`
 --
 ALTER TABLE `facture`
   ADD CONSTRAINT `facture_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `facturepermanant`
+-- Contraintes pour la table `facturepermanant`
 --
 ALTER TABLE `facturepermanant`
   ADD CONSTRAINT `facturepermanant_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`);
 
 --
--- Constraints for table `product`
+-- Contraintes pour la table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_fournisseur`) REFERENCES `fournisseur` (`id`);

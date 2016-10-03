@@ -67,6 +67,13 @@
                             <li class="<?php if ( $this->uri->uri_string() == 'Facture/ConsulterFacture'){echo "active";} ?>"><a  href="<?php echo site_url('Facture/ConsulterFacture')?>"><i class="fa fa-eye"></i>liste des Factures  </a></li>
                         </ul>
                     </li>
+                    <li class="treeview ">
+                        <a href="#"><i class="fa   fa-file"></i> Gestion Bon Commande <i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li class="<?php if ( $this->uri->uri_string() == 'BonCommande/AjouterBonCommande'){echo "active";} ?>"><a  href="<?php echo base_url('BonCommande/AjouterBonCommande')?>"><i class="fa  fa-user-plus"></i> Ajouter Bon Commande</a></li>
+                            <li class="<?php if ( $this->uri->uri_string() == 'BonCommande/ConsulterBonCommande'){echo "active";} ?>"><a  href="<?php echo site_url('BonCommande/ConsulterBonCommande')?>"><i class="fa fa-eye"></i>liste Bon Commande  </a></li>
+                        </ul>
+                    </li>
 
                     <li class="<?php if ( $this->uri->uri_string() == 'Dashboard/Setting'){echo "active";} ?>"><a  href="<?php echo site_url('Dashboard/Setting')?>"><i class="fa fa-gears"></i>Configuration</a></li>
 
